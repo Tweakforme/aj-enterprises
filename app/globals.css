@@ -1,26 +1,155 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+  }
+
+  * {
+    @apply border-gray-800;
+  }
+
+  body {
+    @apply bg-dark-100 text-foreground antialiased;
+    cursor: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Magnetic button effect */
+  .magnetic-btn {
+    @apply relative transition-transform duration-300 ease-out;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Premium glow effect */
+  .glow {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-20 md:py-32 lg:py-40;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16;
+  }
+}
+
+@layer utilities {
+  /* Text reveal animation */
+  .text-reveal {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .text-reveal > span {
+    display: inline-block;
+    transform: translateY(100%);
+    animation: text-reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+
+  @keyframes text-reveal {
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+}
+
+/* ============================================ */
+/* PREMIUM CURSOR - $100K STYLE */
+/* ============================================ */
+
+.cursor-dot,
+.cursor-circle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+
+/* Inner dot - sharp and visible */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+}
+
+/* Outer circle - smooth following */
+.cursor-circle {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease, border-color 0.3s ease, opacity 0.3s ease;
+  opacity: 0.5;
+}
+
+/* ============================================ */
+/* HOVER STATE */
+/* ============================================ */
+
+.cursor-dot.hover {
+  width: 0;
+  height: 0;
+}
+
+.cursor-circle.hover {
+  width: 60px;
+  height: 60px;
+  border-color: #00F0FF;
+  opacity: 0.8;
 }
