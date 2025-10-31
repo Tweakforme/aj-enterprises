@@ -6,8 +6,20 @@ export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const circleRef = useRef<HTMLDivElement>(null);
   const [isHover, setIsHover] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile/touch device
+    const checkMobile = () => {
+      setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Don't run cursor logic on mobile
+    if (isMobile) return;
+
     const dot = dotRef.current;
     const circle = circleRef.current;
     if (!dot || !circle) return;
@@ -17,7 +29,6 @@ export default function CustomCursor() {
     let circleX = 0;
     let circleY = 0;
 
-    // Dot follows mouse instantly
     const moveDot = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
@@ -25,7 +36,6 @@ export default function CustomCursor() {
       dot.style.top = `${mouseY}px`;
     };
 
-    // Circle follows with smooth delay
     const moveCircle = () => {
       circleX += (mouseX - circleX) * 0.15;
       circleY += (mouseY - circleY) * 0.15;
@@ -52,18 +62,20 @@ export default function CustomCursor() {
     return () => {
       document.removeEventListener("mousemove", moveDot);
       document.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener('resize', checkMobile);
     };
-  }, []);
+  }, [isMobile]);
+
+  // Don't render on mobile
+  if (isMobile) return null;
 
   return (
     <>
-      {/* Inner dot - instant */}
       <div 
         ref={dotRef}
         className={`cursor-dot ${isHover ? "hover" : ""}`}
       />
       
-      {/* Outer circle - smooth lag */}
       <div 
         ref={circleRef}
         className={`cursor-circle ${isHover ? "hover" : ""}`}
