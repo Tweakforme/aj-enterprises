@@ -17,16 +17,16 @@ const contactMethods = [
   {
     icon: Phone,
     title: "Call Us",
-    description: "+1 (XXX) XXX-XXXX",
+    description: "+1 (250) 299-5013",
     action: "Call Now",
-    href: "tel:+1XXXXXXXXXX", // Replace with your actual phone number
+    href: "tel:+12502995013", // Replace with your actual phone number
   },
   {
     icon: Mail,
     title: "Email Us",
-    description: "hello@ajenterprises.com",
+    description: "contact@ajenterprises.com",
     action: "Send Email",
-    href: "mailto:hello@ajenterprises.com", // Replace with your actual email
+    href: "mailto:adhvait.jadav@gmail.com", // Replace with your actual email
   },
 ];
 
