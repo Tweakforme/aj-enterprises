@@ -105,28 +105,28 @@ export default function Navbar() {
                 aria-label="Toggle theme"
               >
                 <AnimatePresence mode="wait">
-                  {theme === "dark" ? (
-                    <motion.div
-                      key="sun"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Sun className="w-5 h-5 text-accent-light dark:text-accent" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="moon"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Moon className="w-5 h-5 text-primary-light dark:text-primary" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+  {theme === "light" ? (
+    <motion.div
+      key="sun"
+      initial={{ rotate: -90, opacity: 0 }}
+      animate={{ rotate: 0, opacity: 1 }}
+      exit={{ rotate: 90, opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <Sun className="w-5 h-5 text-accent-light dark:text-accent" />
+    </motion.div>
+  ) : (
+    <motion.div
+      key="moon"
+      initial={{ rotate: 90, opacity: 0 }}
+      animate={{ rotate: 0, opacity: 1 }}
+      exit={{ rotate: -90, opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <Moon className="w-5 h-5 text-primary-light dark:text-primary" />
+    </motion.div>
+  )}
+</AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.button>
 
@@ -163,29 +163,29 @@ export default function Navbar() {
                 className="w-10 h-10 rounded-full bg-gray-200 dark:bg-dark-300 border border-gray-300 dark:border-primary/20 flex items-center justify-center"
                 aria-label="Toggle theme"
               >
-                <AnimatePresence mode="wait">
-                  {theme === "dark" ? (
-                    <motion.div
-                      key="sun"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Sun className="w-4 h-4 text-accent-light dark:text-accent" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="moon"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Moon className="w-4 h-4 text-primary-light dark:text-primary" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+               <AnimatePresence mode="wait">
+  {theme === "light" ? (
+    <motion.div
+      key="sun"
+      initial={{ rotate: -90, opacity: 0 }}
+      animate={{ rotate: 0, opacity: 1 }}
+      exit={{ rotate: 90, opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <Sun className="w-4 h-4 text-accent-light dark:text-accent" />
+    </motion.div>
+  ) : (
+    <motion.div
+      key="moon"
+      initial={{ rotate: 90, opacity: 0 }}
+      animate={{ rotate: 0, opacity: 1 }}
+      exit={{ rotate: -90, opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <Moon className="w-4 h-4 text-primary-light dark:text-primary" />
+    </motion.div>
+  )}
+</AnimatePresence>
               </motion.button>
 
               {/* Mobile Menu Button */}
