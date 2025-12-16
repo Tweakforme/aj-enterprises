@@ -46,7 +46,7 @@ export default function Navbar() {
                <h1 className="text-2xl font-bold tracking-wider">
   <span className="text-white">ORCA</span>
   <span className="text-primary">.</span>
-  <span className="text-white"> ENTERPRISES Inc.</span>
+  <span className="text-white"> ENTERPRISES.</span>
 </h1>
 
               </motion.div>
