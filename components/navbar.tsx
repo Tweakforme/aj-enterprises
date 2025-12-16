@@ -8,7 +8,7 @@ import { useTheme } from "@/app/context/ThemeContext";
 
 const navLinks = [
   { name: "Work", href: "/work" },
-  { name: "Services", href: "#services" },
+  { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
