@@ -13,18 +13,38 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#00F0FF", // Electric cyan
+          DEFAULT: "#00F0FF", // Electric cyan - dark mode
           dark: "#00C5D1",
+          light: "#006B7D", // Deep ocean teal - light mode
         },
         accent: {
-          DEFAULT: "#FFE500", // Vibrant yellow
+          DEFAULT: "#FFE500", // Vibrant yellow - dark mode
           dark: "#FFD700",
+          light: "#FF6B35", // Coral orange - light mode
         },
         dark: {
           100: "#0A0A0A",
           200: "#121212",
           300: "#1A1A1A",
           400: "#242424",
+        },
+        light: {
+          100: "#F8FAFB", // Soft blue-tinted white
+          200: "#EDF2F7", // Light blue-gray
+          300: "#E2E8F0", // Cool gray
+          400: "#CBD5E0", // Medium gray
+        },
+        ocean: {
+          50: "#E6F7F9",
+          100: "#B3E5EC",
+          200: "#80D3DF",
+          300: "#4DC1D2",
+          400: "#1AAFC5",
+          500: "#006B7D", // Primary ocean
+          600: "#005563",
+          700: "#003F4A",
+          800: "#002A31",
+          900: "#001418",
         },
       },
       fontFamily: {

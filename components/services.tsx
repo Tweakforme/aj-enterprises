@@ -75,61 +75,61 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
       transition={{ duration: 0.8, delay: index * 0.15, ease: [0.33, 1, 0.68, 1] }}
-      className="group relative border border-white/10 bg-dark-200/50 backdrop-blur-sm hover:border-primary/40 transition-all duration-500 overflow-hidden flex flex-col h-full"
+      className="group relative border border-ocean-300 dark:border-white/10 bg-white dark:bg-dark-200/50 backdrop-blur-sm hover:border-primary-light dark:hover:border-primary/40 transition-all duration-500 overflow-hidden flex flex-col h-full shadow-lg dark:shadow-none"
     >
       {service.highlight && (
-        <div className="absolute top-6 right-6 px-3 py-1 bg-primary/20 border border-primary/40 rounded-full z-10">
-          <span className="text-xs font-bold text-primary uppercase tracking-wide">
+        <div className="absolute top-6 right-6 px-3 py-1 bg-primary-light/20 dark:bg-primary/20 border border-primary-light/40 dark:border-primary/40 rounded-full z-10">
+          <span className="text-xs font-bold text-primary-light dark:text-primary uppercase tracking-wide">
             {service.highlight}
           </span>
         </div>
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-light/5 dark:from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <div className="relative p-8 lg:p-10 flex flex-col h-full">
-        <div className="font-display text-7xl font-bold text-white/5 mb-6 group-hover:text-primary/10 transition-colors duration-500">
+        <div className="font-display text-7xl font-bold text-ocean-200 dark:text-white/5 mb-6 group-hover:text-primary-light/20 dark:group-hover:text-primary/10 transition-colors duration-500">
           {service.number}
         </div>
 
-        <h3 className="font-display text-4xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
+        <h3 className="font-display text-4xl font-bold mb-4 text-ocean-800 dark:text-white group-hover:text-primary-light dark:group-hover:text-primary transition-colors duration-300">
           {service.title}
         </h3>
 
-        <p className="text-white/60 text-base leading-relaxed mb-8">
+        <p className="text-ocean-600 dark:text-white/60 text-base leading-relaxed mb-8">
           {service.description}
         </p>
 
         <ul className="space-y-3 mb-8 flex-grow">
           {service.features.map((feature, i) => (
-            <li key={i} className="flex items-start gap-3 text-sm text-white/70">
-              <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+            <li key={i} className="flex items-start gap-3 text-sm text-ocean-700 dark:text-white/70">
+              <Check className="w-5 h-5 text-primary-light dark:text-primary flex-shrink-0 mt-0.5" />
               <span>{feature}</span>
             </li>
           ))}
         </ul>
 
-        <div className="space-y-4 pt-6 border-t border-white/10 mt-auto">
+        <div className="space-y-4 pt-6 border-t border-ocean-300 dark:border-white/10 mt-auto">
           <div>
             <div className="flex items-baseline gap-2 mb-1">
-              <span className="text-xs text-white/50 uppercase tracking-wide">Starting at</span>
+              <span className="text-xs text-ocean-500 dark:text-white/50 uppercase tracking-wide">Starting at</span>
             </div>
-            <div className="font-display text-4xl font-bold text-primary mb-1">
+            <div className="font-display text-4xl font-bold text-primary-light dark:text-primary mb-1">
               {service.startingPrice}
             </div>
-            <div className="text-xs text-white/50">
+            <div className="text-xs text-ocean-500 dark:text-white/50">
               Full range: {service.priceRange}
             </div>
           </div>
 
-          <button className="w-full group/btn relative px-6 py-3 bg-white/5 border border-white/10 text-white font-semibold text-sm hover:bg-primary hover:border-primary hover:text-dark-100 transition-all duration-300 flex items-center justify-center gap-2">
+          <button className="w-full group/btn relative px-6 py-3 bg-ocean-100 dark:bg-white/5 border border-ocean-300 dark:border-white/10 text-ocean-800 dark:text-white font-semibold text-sm hover:bg-primary-light dark:hover:bg-primary hover:border-primary-light dark:hover:border-primary hover:text-white dark:hover:text-dark-100 transition-all duration-300 flex items-center justify-center gap-2">
             <span>Get Started</span>
             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>
 
-      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full transform translate-x-16 -translate-y-16 group-hover:bg-primary/10 transition-all duration-500" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-primary-light/5 dark:bg-primary/5 blur-3xl rounded-full transform translate-x-16 -translate-y-16 group-hover:bg-primary-light/10 dark:group-hover:bg-primary/10 transition-all duration-500" />
     </motion.div>
   );
 }
@@ -139,9 +139,9 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-16 sm:py-20 lg:py-24 xl:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/2 to-transparent" />
-      <div className="pointer-events-none absolute top-1/4 left-1/4 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary/5 blur-3xl" />
+    <section id="services" className="relative py-16 sm:py-20 lg:py-24 xl:py-28 overflow-hidden bg-light-100 dark:bg-dark-100 transition-colors duration-300">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-light/3 dark:via-primary/2 to-transparent" />
+      <div className="pointer-events-none absolute top-1/4 left-1/4 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary-light/5 dark:bg-primary/5 blur-3xl" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -151,18 +151,18 @@ export default function Services() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary/20 bg-primary/5 rounded-full mb-6">
-            <span className="text-xs font-bold text-primary uppercase tracking-wide">Services & Pricing</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary-light/20 dark:border-primary/20 bg-primary-light/10 dark:bg-primary/5 rounded-full mb-6">
+            <span className="text-xs font-bold text-primary-light dark:text-primary uppercase tracking-wide">Services & Pricing</span>
           </div>
           
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-ocean-900 dark:text-white">
             Transparent Pricing,{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-300 to-yellow-300">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-light via-ocean-400 to-accent-light dark:from-primary dark:via-emerald-300 dark:to-yellow-300">
               Real Value
             </span>
           </h2>
           
-          <p className="text-base sm:text-lg text-white/60 leading-relaxed">
+          <p className="text-base sm:text-lg text-ocean-600 dark:text-white/60 leading-relaxed">
             From simple business sites to complex e-commerce stores — professional web development 
             with no hidden fees. Every package includes 1 full year of free maintenance.
           </p>
@@ -178,12 +178,12 @@ export default function Services() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative bg-dark-200/50 border border-white/10 p-8 sm:p-10 lg:p-12 text-center mb-16 sm:mb-20"
+          className="relative bg-white dark:bg-dark-200/50 border border-ocean-300 dark:border-white/10 p-8 sm:p-10 lg:p-12 text-center mb-16 sm:mb-20 shadow-lg dark:shadow-none"
         >
-          <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
+          <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-ocean-900 dark:text-white">
             We Work With All Major Platforms
           </h3>
-          <p className="text-white/60 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
+          <p className="text-ocean-600 dark:text-white/60 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
             Whether you prefer Shopify, WordPress, Wix, Squarespace, or need a fully custom solution — we've got you covered.
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
@@ -193,7 +193,7 @@ export default function Services() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: 0.5 + i * 0.05 }}
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-dark-300/50 border border-white/10 hover:border-primary/30 transition-all duration-300 text-sm sm:text-base"
+                className="px-4 sm:px-6 py-2 sm:py-3 bg-light-200 dark:bg-dark-300/50 border border-ocean-300 dark:border-white/10 hover:border-primary-light dark:hover:border-primary/30 transition-all duration-300 text-sm sm:text-base text-ocean-800 dark:text-white"
               >
                 {platform}
               </motion.div>
@@ -208,10 +208,10 @@ export default function Services() {
           className="max-w-4xl mx-auto"
         >
           <div className="text-center mb-10 sm:mb-12">
-            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ocean-900 dark:text-white">
               Every Package Includes
             </h3>
-            <p className="text-white/60 text-sm sm:text-base">
+            <p className="text-ocean-600 dark:text-white/60 text-sm sm:text-base">
               No surprises. No hidden fees. Just honest, transparent pricing.
             </p>
           </div>
@@ -230,13 +230,13 @@ export default function Services() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.7 + i * 0.05 }}
-                className="bg-dark-200/50 border border-white/10 p-5 sm:p-6 hover:border-primary/30 transition-all duration-300"
+                className="bg-white dark:bg-dark-200/50 border border-ocean-300 dark:border-white/10 p-5 sm:p-6 hover:border-primary-light dark:hover:border-primary/30 transition-all duration-300 shadow-sm dark:shadow-none"
               >
                 <div className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <Check className="w-5 h-5 text-primary-light dark:text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-white mb-1 text-sm sm:text-base">{item.title}</h4>
-                    <p className="text-xs sm:text-sm text-white/60">{item.desc}</p>
+                    <h4 className="font-semibold text-ocean-900 dark:text-white mb-1 text-sm sm:text-base">{item.title}</h4>
+                    <p className="text-xs sm:text-sm text-ocean-600 dark:text-white/60">{item.desc}</p>
                   </div>
                 </div>
               </motion.div>
@@ -250,15 +250,15 @@ export default function Services() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mt-16 sm:mt-20"
         >
-          <p className="text-white/60 mb-6 text-sm sm:text-base">
+          <p className="text-ocean-600 dark:text-white/60 mb-6 text-sm sm:text-base">
             Need something custom or have questions about pricing?
           </p>
-          <button className="magnetic-btn relative px-8 sm:px-10 py-3 sm:py-4 bg-primary text-dark-100 font-semibold text-sm uppercase tracking-wide overflow-hidden group hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] transition-all duration-300">
+          <button className="magnetic-btn relative px-8 sm:px-10 py-3 sm:py-4 bg-primary-light dark:bg-primary text-white dark:text-dark-100 font-semibold text-sm uppercase tracking-wide overflow-hidden group hover:shadow-[0_0_30px_rgba(0,107,125,0.4)] dark:hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] transition-all duration-300">
             <span className="relative z-10">Let's Talk About Your Project</span>
-            <div className="absolute inset-0 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-accent-light dark:bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
           </button>
           
-          <p className="text-xs sm:text-sm text-white/40 mt-6">
+          <p className="text-xs sm:text-sm text-ocean-500 dark:text-white/40 mt-6">
             Free consultation • No obligation • Fast response
           </p>
         </motion.div>

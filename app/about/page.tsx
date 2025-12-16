@@ -28,14 +28,22 @@ export default function AboutPage() {
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"]);
 
   return (
-    <div ref={containerRef} className="relative bg-dark-100 text-white">
+    <div ref={containerRef} className="relative bg-white dark:bg-dark-100 text-ocean-900 dark:text-white transition-colors duration-300">
       {/* HERO SECTION */}
       <section className="relative min-h-screen lg:min-h-[85vh] flex items-center overflow-hidden pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 lg:pb-24">
         {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent opacity-30" />
+        <div className="absolute inset-0 bg-gradient-radial from-primary-light/10 dark:from-primary/5 via-transparent to-transparent opacity-30" />
         <div className="absolute inset-0 opacity-5">
           <div
             className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(0,107,125,0.08) 1px, transparent 1px),linear-gradient(90deg, rgba(0,107,125,0.08) 1px, transparent 1px)",
+              backgroundSize: "100px 100px",
+            }}
+          />
+          <div
+            className="absolute inset-0 hidden dark:block"
             style={{
               backgroundImage:
                 "linear-gradient(rgba(0,240,255,0.08) 1px, transparent 1px),linear-gradient(90deg, rgba(0,240,255,0.08) 1px, transparent 1px)",
@@ -55,24 +63,24 @@ export default function AboutPage() {
               className="lg:col-span-7 space-y-6 sm:space-y-8"
             >
               {/* Badge */}
-              <div className="inline-block px-4 py-2 border-l-2 border-primary bg-dark-200/50">
-                <span className="text-xs font-semibold text-primary uppercase tracking-widest">
+              <div className="inline-block px-4 py-2 border-l-2 border-primary-light dark:border-primary bg-light-200 dark:bg-dark-200/50 transition-colors duration-300">
+                <span className="text-xs font-semibold text-primary-light dark:text-primary uppercase tracking-widest transition-colors duration-300">
                   About
                 </span>
               </div>
 
               {/* Heading */}
               <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight">
-                <span className="text-white block mb-2">Building high-performance</span>
-                <span className="text-white block mb-2">websites that drive</span>
-                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-300 to-yellow-300">
+                <span className="text-ocean-900 dark:text-white block mb-2 transition-colors duration-300">Building high-performance</span>
+                <span className="text-ocean-900 dark:text-white block mb-2 transition-colors duration-300">websites that drive</span>
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary-light via-teal-400 to-accent-light dark:from-primary dark:via-emerald-300 dark:to-yellow-300">
                   real business growth
                 </span>
               </h1>
 
               {/* Description */}
-              <div className="space-y-4 sm:space-y-5 text-sm sm:text-base lg:text-lg text-gray-400 leading-relaxed max-w-2xl">
-                <p className="text-white text-lg sm:text-xl font-medium">
+              <div className="space-y-4 sm:space-y-5 text-sm sm:text-base lg:text-lg text-ocean-600 dark:text-gray-400 leading-relaxed max-w-2xl transition-colors duration-300">
+                <p className="text-ocean-900 dark:text-white text-lg sm:text-xl font-medium transition-colors duration-300">
                   Fast delivery. Quality code. Measurable results.
                 </p>
                 <p>
@@ -87,7 +95,7 @@ export default function AboutPage() {
                   code — we architect digital experiences that generate revenue.
                 </p>
                 <p>
-                  <span className="text-white font-semibold">
+                  <span className="text-ocean-900 dark:text-white font-semibold transition-colors duration-300">
                     Starting at $500
                   </span>{" "}
                   with one full year of maintenance included. No hidden fees, no
@@ -99,17 +107,17 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
                 {/* Primary Button */}
                 <Link href="#contact" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto magnetic-btn relative px-6 sm:px-8 py-3 sm:py-4 bg-primary text-dark-100 font-semibold text-sm uppercase tracking-wide overflow-hidden group transition-all duration-300">
+                  <button className="w-full sm:w-auto magnetic-btn relative px-6 sm:px-8 py-3 sm:py-4 bg-primary-light dark:bg-primary text-white dark:text-dark-100 font-semibold text-sm uppercase tracking-wide overflow-hidden group transition-all duration-300">
                     <span className="relative z-10">Start Your Project</span>
-                    <div className="absolute inset-0 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-accent-light dark:bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                   </button>
                 </Link>
 
                 {/* Outline Button */}
                 <Link href="#work" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto magnetic-btn relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/20 text-white font-semibold text-sm uppercase tracking-wide overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                  <button className="w-full sm:w-auto magnetic-btn relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-ocean-200 dark:border-white/20 text-ocean-900 dark:text-white font-semibold text-sm uppercase tracking-wide overflow-hidden group hover:border-primary-light/50 dark:hover:border-primary/50 transition-all duration-300 shadow-md dark:shadow-none">
                     <span className="relative z-10">View Our Work</span>
-                    <div className="absolute inset-0 bg-primary/10 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-primary-light/10 dark:bg-primary/10 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                   </button>
                 </Link>
               </div>
@@ -124,16 +132,24 @@ export default function AboutPage() {
               className="lg:col-span-5 mt-8 lg:mt-0"
             >
               <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[550px] xl:h-[600px]">
-                {/* Glow Effect */}
-                <div
-                  className="absolute -inset-1"
-                  style={{
-                    background:
-                      "linear-gradient(140deg, rgba(255,255,255,0.08), rgba(0,0,0,0) 60%)",
-                  }}
-                />
+               {/* Light mode glow */}
+<div
+  className="absolute -inset-1"
+  style={{
+    background:
+      "linear-gradient(140deg, rgba(0,107,125,0.15), rgba(0,0,0,0) 60%)",
+  }}
+/>
+{/* Dark mode glow */}
+<div
+  className="absolute -inset-1 hidden dark:block"
+  style={{
+    background:
+      "linear-gradient(140deg, rgba(255,255,255,0.08), rgba(0,0,0,0) 60%)",
+  }}
+/>
                 {/* Image Container */}
-                <div className="relative h-full w-full overflow-hidden bg-dark-200 ring-1 ring-white/10">
+                <div className="relative h-full w-full overflow-hidden bg-light-200 dark:bg-dark-200 ring-1 ring-ocean-200 dark:ring-white/10 transition-colors duration-300">
                   <Image
                     src="/aj-photo.jpeg"
                     alt="AJ — Founder"
@@ -142,7 +158,7 @@ export default function AboutPage() {
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-100/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/70 dark:from-dark-100/70 via-transparent to-transparent transition-colors duration-300" />
                 </div>
               </div>
             </motion.div>
@@ -151,7 +167,7 @@ export default function AboutPage() {
       </section>
 
       {/* STATS SECTION */}
-      <section className="relative py-12 sm:py-16 lg:py-20 border-y border-white/10">
+      <section className="relative py-12 sm:py-16 lg:py-20 border-y border-ocean-200 dark:border-white/10 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {[
@@ -165,21 +181,21 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: i * 0.05 }}
                 viewport={{ once: true }}
-                className="relative overflow-hidden bg-dark-200 border border-white/10 px-6 sm:px-8 py-8 sm:py-10"
+                className="relative overflow-hidden bg-white dark:bg-dark-200 border border-ocean-200 dark:border-white/10 px-6 sm:px-8 py-8 sm:py-10 shadow-lg dark:shadow-none transition-all duration-300"
               >
                 {/* Corner Sheen */}
-                <div className="pointer-events-none absolute -top-1 -right-1 w-32 sm:w-40 h-32 sm:h-40 bg-white/5 blur-3xl rounded-full" />
+                <div className="pointer-events-none absolute -top-1 -right-1 w-32 sm:w-40 h-32 sm:h-40 bg-primary-light/5 dark:bg-white/5 blur-3xl rounded-full transition-colors duration-300" />
                 
                 {/* Stat Number */}
-                <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-300 to-yellow-300">
+                <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary-light via-teal-400 to-accent-light dark:from-primary dark:via-emerald-300 dark:to-yellow-300">
                   {item.k}
                 </div>
                 
                 {/* Divider */}
-                <div className="h-[2px] w-12 bg-gradient-to-r from-primary/60 via-emerald-300/60 to-yellow-300/60 mb-3" />
+                <div className="h-[2px] w-12 bg-gradient-to-r from-primary-light/60 via-teal-400/60 to-accent-light/60 dark:from-primary/60 dark:via-emerald-300/60 dark:to-yellow-300/60 mb-3 transition-colors duration-300" />
                 
                 {/* Description */}
-                <p className="text-xs sm:text-sm text-white/65 leading-relaxed">{item.d}</p>
+                <p className="text-xs sm:text-sm text-ocean-600 dark:text-white/65 leading-relaxed transition-colors duration-300">{item.d}</p>
               </motion.div>
             ))}
           </div>
@@ -189,19 +205,19 @@ export default function AboutPage() {
       {/* FEATURES SECTION */}
       <section className="relative py-16 sm:py-20 lg:py-24 xl:py-28 overflow-hidden">
         {/* Background Glows */}
-        <div className="pointer-events-none absolute -top-20 left-1/4 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary/5 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 right-1/4 w-[35rem] sm:w-[45rem] h-[35rem] sm:h-[45rem] bg-yellow-300/5 blur-3xl" />
+        <div className="pointer-events-none absolute -top-20 left-1/4 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary-light/5 dark:bg-primary/5 blur-3xl transition-colors duration-300" />
+        <div className="pointer-events-none absolute bottom-0 right-1/4 w-[35rem] sm:w-[45rem] h-[35rem] sm:h-[45rem] bg-accent-light/5 dark:bg-yellow-300/5 blur-3xl transition-colors duration-300" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20">
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight text-ocean-900 dark:text-white transition-colors duration-300">
               Our Approach to{" "}
-              <span className="block sm:inline bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-300 to-yellow-300">
+              <span className="block sm:inline bg-clip-text text-transparent bg-gradient-to-r from-primary-light via-teal-400 to-accent-light dark:from-primary dark:via-emerald-300 dark:to-yellow-300">
                 Web Development
               </span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-ocean-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
               Technical precision meets business growth. We build systems that scale, perform,
               and deliver measurable impact.
             </p>
@@ -247,29 +263,29 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
                 viewport={{ once: true }}
-                className="relative group bg-gradient-to-br from-dark-200 to-dark-300 border border-white/10 hover:border-primary/40 p-6 sm:p-8 lg:p-10 transition-all duration-500"
+                className="relative group bg-gradient-to-br from-white to-light-200 dark:from-dark-200 dark:to-dark-300 border border-ocean-200 dark:border-white/10 hover:border-primary-light/40 dark:hover:border-primary/40 p-6 sm:p-8 lg:p-10 transition-all duration-500 shadow-lg dark:shadow-none"
               >
                 {/* Hover Glow */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-primary/10 to-yellow-300/5 blur-xl transition-opacity duration-700" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-primary-light/10 to-accent-light/5 dark:from-primary/10 dark:to-yellow-300/5 blur-xl transition-opacity duration-700" />
 
                 <div className="relative">
                   {/* Icon */}
-                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 mb-4 sm:mb-6 border border-white/10 bg-dark-300 group-hover:border-primary/50 transition-all duration-300">
-                    <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 mb-4 sm:mb-6 border border-ocean-200 dark:border-white/10 bg-light-200 dark:bg-dark-300 group-hover:border-primary-light/50 dark:group-hover:border-primary/50 transition-all duration-300">
+                    <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary-light dark:text-primary group-hover:scale-110 transition-transform duration-300" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-display text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-white group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-display text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-ocean-900 dark:text-white group-hover:text-primary-light dark:group-hover:text-primary transition-colors duration-300">
                     {item.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-ocean-600 dark:text-gray-400 text-sm leading-relaxed transition-colors duration-300">
                     {item.desc}
                   </p>
 
                   {/* Animated Underline */}
-                  <div className="mt-3 sm:mt-4 h-[2px] w-0 bg-gradient-to-r from-primary via-emerald-300 to-yellow-300 group-hover:w-16 sm:group-hover:w-20 transition-all duration-500" />
+                  <div className="mt-3 sm:mt-4 h-[2px] w-0 bg-gradient-to-r from-primary-light via-teal-400 to-accent-light dark:from-primary dark:via-emerald-300 dark:to-yellow-300 group-hover:w-16 sm:group-hover:w-20 transition-all duration-500" />
                 </div>
               </motion.div>
             ))}
@@ -280,11 +296,18 @@ export default function AboutPage() {
       {/* FINAL CTA SECTION */}
       <section className="relative py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative bg-gradient-to-br from-dark-200 to-dark-300 border border-white/10 p-8 sm:p-12 lg:p-16 text-center overflow-hidden">
+          <div className="relative bg-gradient-to-br from-white to-light-200 dark:from-dark-200 dark:to-dark-300 border border-ocean-200 dark:border-white/10 p-8 sm:p-12 lg:p-16 text-center overflow-hidden shadow-xl dark:shadow-none transition-all duration-300">
             {/* Pattern Overlay */}
             <div className="absolute inset-0 opacity-[0.06]">
               <div
                 className="absolute inset-0"
+                style={{
+                  backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0,107,125,0.8) 1px, transparent 1px)`,
+                  backgroundSize: "22px 22px",
+                }}
+              />
+              <div
+                className="absolute inset-0 hidden dark:block"
                 style={{
                   backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.8) 1px, transparent 1px)`,
                   backgroundSize: "22px 22px",
@@ -294,17 +317,17 @@ export default function AboutPage() {
 
             <div className="relative max-w-3xl mx-auto">
               {/* Heading */}
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight text-ocean-900 dark:text-white transition-colors duration-300">
                 Ready to{" "}
-                <span className="block sm:inline bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-300 to-yellow-300">
+                <span className="block sm:inline bg-clip-text text-transparent bg-gradient-to-r from-primary-light via-teal-400 to-accent-light dark:from-primary dark:via-emerald-300 dark:to-yellow-300">
                   Get Started?
                 </span>
               </h2>
 
               {/* Description */}
-              <p className="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 leading-relaxed">
+              <p className="text-base sm:text-lg text-ocean-600 dark:text-gray-400 mb-8 sm:mb-10 leading-relaxed transition-colors duration-300">
                 Professional web development starting at{" "}
-                <span className="text-white font-bold text-lg sm:text-xl">$500</span> — including
+                <span className="text-ocean-900 dark:text-white font-bold text-lg sm:text-xl transition-colors duration-300">$500</span> — including
                 one full year of maintenance, support, and optimization.
               </p>
 
@@ -312,30 +335,30 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center">
                 {/* Primary Button */}
                 <Link href="#contact" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto magnetic-btn relative px-6 sm:px-8 py-3 sm:py-4 bg-primary text-dark-100 font-semibold text-sm uppercase tracking-wide overflow-hidden group transition-all duration-300">
+                  <button className="w-full sm:w-auto magnetic-btn relative px-6 sm:px-8 py-3 sm:py-4 bg-primary-light dark:bg-primary text-white dark:text-dark-100 font-semibold text-sm uppercase tracking-wide overflow-hidden group transition-all duration-300">
                     <span className="relative z-10">Start Your Project</span>
-                    <div className="absolute inset-0 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-accent-light dark:bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                   </button>
                 </Link>
 
                 {/* Outline Button */}
                 <Link href="#work" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto magnetic-btn relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/20 text-white font-semibold text-sm uppercase tracking-wide overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                  <button className="w-full sm:w-auto magnetic-btn relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-ocean-200 dark:border-white/20 text-ocean-900 dark:text-white font-semibold text-sm uppercase tracking-wide overflow-hidden group hover:border-primary-light/50 dark:hover:border-primary/50 transition-all duration-300 shadow-md dark:shadow-none">
                     <span className="relative z-10">View Our Work</span>
-                    <div className="absolute inset-0 bg-primary/10 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-primary-light/10 dark:bg-primary/10 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                   </button>
                 </Link>
               </div>
 
               {/* Location Text */}
-              <p className="text-xs sm:text-sm text-gray-500 mt-8 sm:mt-10">
+              <p className="text-xs sm:text-sm text-ocean-500 dark:text-gray-500 mt-8 sm:mt-10 transition-colors duration-300">
                 Based in Calgary, Alberta • Serving clients worldwide
               </p>
             </div>
 
             {/* Gradient Accents */}
-            <div className="pointer-events-none absolute top-0 left-1/3 w-64 sm:w-96 h-64 sm:h-96 bg-primary/10 blur-3xl" />
-            <div className="pointer-events-none absolute bottom-0 right-1/3 w-64 sm:w-96 h-64 sm:h-96 bg-yellow-300/10 blur-3xl" />
+            <div className="pointer-events-none absolute top-0 left-1/3 w-64 sm:w-96 h-64 sm:h-96 bg-primary-light/10 dark:bg-primary/10 blur-3xl transition-colors duration-300" />
+            <div className="pointer-events-none absolute bottom-0 right-1/3 w-64 sm:w-96 h-64 sm:h-96 bg-accent-light/10 dark:bg-yellow-300/10 blur-3xl transition-colors duration-300" />
           </div>
         </div>
       </section>
