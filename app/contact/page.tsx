@@ -19,14 +19,14 @@ const contactMethods = [
     title: "Call Us",
     description: "+1 (250) 299-5013",
     action: "Call Now",
-    href: "tel:+12502995013", // Replace with your actual phone number
+    href: "tel:+12502995013",
   },
   {
     icon: Mail,
     title: "Email Us",
-    description: "contact@ajenterprises.com",
+    description: "contact@ajenterprises.ca",
     action: "Send Email",
-    href: "mailto:adhvait.jadav@gmail.com", // Replace with your actual email
+    href: "mailto:adhvait.jadav@gmail.com",
   },
 ];
 
@@ -128,9 +128,7 @@ export default function ContactPage() {
                     </a>
                   ) : (
                     <a
-                      href="https://calendar.app.google/mBxb3K9zxhFUdfvB7"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="#calendar"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-dark-100 text-sm font-semibold hover:bg-accent transition-all duration-300"
                     >
                       <span>{method.action}</span>
@@ -152,7 +150,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* GOOGLE CALENDAR BOOKING SECTION */}
+      {/* CALENDLY BOOKING SECTION */}
       <section id="calendar" ref={calendarRef} className="relative py-16 sm:py-20 lg:py-24 bg-dark-200/30">
         <div className="pointer-events-none absolute top-0 left-1/4 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary/5 blur-3xl" />
         
@@ -177,8 +175,8 @@ export default function ContactPage() {
               </p>
             </div>
 
-            {/* Google Calendar Embed */}
-            <div className="relative bg-dark-200 border border-white/10 p-4 sm:p-6 lg:p-8 overflow-hidden">
+            {/* Calendly Embed */}
+            <div className="relative bg-dark-200 border border-white/10 p-4 sm:p-6 lg:p-8 overflow-hidden rounded-lg">
               <div className="absolute inset-0 opacity-[0.03]">
                 <div
                   className="absolute inset-0"
@@ -190,27 +188,45 @@ export default function ContactPage() {
               </div>
 
               <div className="relative">
-                <a
-                  href="https://calendar.app.google/mBxb3K9zxhFUdfvB7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full bg-dark-300 border-2 border-white/10 hover:border-primary/50 rounded-lg overflow-hidden transition-all duration-300 group"
-                  style={{ minHeight: '600px' }}
+                {/* Calendly Inline Widget */}
+                <div 
+                  className="w-full bg-white rounded-lg overflow-hidden shadow-2xl"
+                  style={{ 
+                    minHeight: '750px',
+                    height: '750px'
+                  }}
                 >
-                  <div className="flex flex-col items-center justify-center h-full p-12 text-center">
-                    <Calendar className="w-20 h-20 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="font-display text-3xl font-bold mb-4 group-hover:text-primary transition-colors">
-                      Click to View Available Times
-                    </h3>
-                    <p className="text-white/60 text-lg mb-8 max-w-md">
-                      Opens in a new window where you can select your preferred date and time for a free 30-minute consultation.
-                    </p>
-                    <div className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-dark-100 font-bold text-sm uppercase tracking-wide group-hover:bg-accent transition-all duration-300">
-                      <span>Book Your Meeting Now</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </div>
-                  </div>
-                </a>
+                  <iframe
+                    src="https://calendly.com/adhvait-jadav/30min?embed_domain=ajenterprises.ca&embed_type=Inline&hide_gdpr_banner=1&hide_event_type_details=1&primary_color=00f0ff"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    scrolling="yes"
+                    title="Schedule a Meeting"
+                    className="w-full h-full"
+                    style={{
+                      border: 'none',
+                      pointerEvents: 'auto'
+                    }}
+                    allow="payment"
+                  />
+                </div>
+                
+                {/* Fallback link */}
+                <div className="mt-6 text-center">
+                  <p className="text-white/40 text-xs mb-2">
+                    Prefer a larger view? 
+                  </p>
+                  <a
+                    href="https://calendly.com/adhvait-jadav/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors text-sm font-semibold"
+                  >
+                    Open in new window
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -292,7 +308,7 @@ export default function ContactPage() {
                     </a>
                     
                     <a
-                      href="mailto:hello@ajenterprises.com"
+                      href="mailto:adhvait.jadav@gmail.com"
                       className="flex items-center gap-3 text-white hover:text-primary transition-colors group"
                     >
                       <Mail className="w-5 h-5 text-primary" />

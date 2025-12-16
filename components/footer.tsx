@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="inline-block mb-6">
               <div className="font-display text-3xl font-bold">
-                <span className="text-white">AJ</span>
+                <span className="text-white">Orca</span>
                 <span className="text-primary">.</span>
               </div>
             </Link>
@@ -87,7 +87,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-sm">
-            © {currentYear} AJ Enterprises. All rights reserved.
+            © {currentYear} Orca Enterprises Inc. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="#" className="text-white/40 hover:text-primary text-sm transition-colors duration-300">

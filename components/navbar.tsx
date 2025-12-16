@@ -44,9 +44,9 @@ export default function Navbar() {
                 className="font-display text-2xl md:text-3xl font-bold tracking-tight"
               >
                <h1 className="text-2xl font-bold tracking-wider">
-  <span className="text-white">AJ</span>
+  <span className="text-white">Orca</span>
   <span className="text-primary">.</span>
-  <span className="text-white"> ENTERPRISES</span>
+  <span className="text-white"> ENTERPRISES Inc.</span>
 </h1>
 
               </motion.div>

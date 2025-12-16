@@ -348,7 +348,7 @@ export default function WorkPage() {
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
               Why Choose{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-300 to-yellow-300">
-                AJ Enterprises
+                Orca Enterprises Inc.
               </span>
             </h2>
             
