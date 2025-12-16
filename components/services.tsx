@@ -16,7 +16,7 @@ const services = [
       "Contact Forms & Maps",
       "Basic SEO Setup",
       "Fast Loading Speed",
-      "1 Year Free Maintenance"
+      "3 Months of Free Maintenance"
     ],
     startingPrice: "$500",
     priceRange: "$500 - $1,500",
@@ -32,7 +32,7 @@ const services = [
       "Payment Integration",
       "Inventory Management",
       "Mobile Shopping Experience",
-      "1 Year Free Maintenance"
+      "3 Months of Free Maintenance"
     ],
     startingPrice: "$800",
     priceRange: "$800 - $2,500",
@@ -48,7 +48,7 @@ const services = [
       "Database Systems",
       "User Dashboards",
       "Advanced Functionality",
-      "1 Year Free Maintenance"
+      "3 Months of Free Maintenance"
     ],
     startingPrice: "$1,200",
     priceRange: "$1,200+",
@@ -218,7 +218,7 @@ export default function Services() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[
-              { title: "Free 1 Year Maintenance", desc: "Updates, security, and support included" },
+              { title: "Free 3 Months Maintenance", desc: "Updates, security, and support included" },
               { title: "Mobile-First Design", desc: "Looks perfect on every device" },
               { title: "Performance Optimized", desc: "Lightning-fast load times" },
               { title: "SEO Foundation", desc: "Built to rank on Google" },

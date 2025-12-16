@@ -258,7 +258,7 @@ function ServiceCard({ service, index }: { service: typeof coreServices[0]; inde
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
       transition={{ duration: 0.8, delay: index * 0.15, ease: [0.33, 1, 0.68, 1] }}
-      className="group relative border border-ocean-300 dark:border-white/10 bg-white dark:bg-dark-200/50 backdrop-blur-sm hover:border-primary-light dark:hover:border-primary/40 transition-all duration-500 overflow-hidden flex flex-col h-full shadow-lg dark:shadow-none"
+      className="group relative border border-ocean-200 dark:border-white/10 bg-white dark:bg-dark-200/50 backdrop-blur-sm hover:border-primary-light/40 dark:hover:border-primary/40 transition-all duration-500 overflow-hidden flex flex-col h-full shadow-lg dark:shadow-none"
     >
       {service.highlight && (
         <div className="absolute top-6 right-6 px-3 py-1 bg-primary-light/20 dark:bg-primary/20 border border-primary-light/40 dark:border-primary/40 rounded-full z-10">
@@ -292,7 +292,7 @@ function ServiceCard({ service, index }: { service: typeof coreServices[0]; inde
           ))}
         </ul>
 
-        <div className="space-y-4 pt-6 border-t border-ocean-300 dark:border-white/10 mt-auto">
+        <div className="space-y-4 pt-6 border-t border-ocean-200 dark:border-white/10 mt-auto">
           <div>
             <div className="flex items-baseline gap-2 mb-1">
               <span className="text-xs text-ocean-500 dark:text-white/50 uppercase tracking-wide">Starting at</span>
@@ -306,7 +306,7 @@ function ServiceCard({ service, index }: { service: typeof coreServices[0]; inde
           </div>
 
           <Link href="/contact">
-            <button className="w-full group/btn relative px-6 py-3 bg-ocean-100 dark:bg-white/5 border border-ocean-300 dark:border-white/10 text-ocean-800 dark:text-white font-semibold text-sm hover:bg-primary-light dark:hover:bg-primary hover:border-primary-light dark:hover:border-primary hover:text-white dark:hover:text-dark-100 transition-all duration-300 flex items-center justify-center gap-2">
+            <button className="w-full group/btn relative px-6 py-3 bg-ocean-100 dark:bg-white/5 border border-ocean-200 dark:border-white/10 text-ocean-800 dark:text-white font-semibold text-sm hover:bg-primary-light dark:hover:bg-primary hover:border-primary-light dark:hover:border-primary hover:text-white dark:hover:text-dark-100 transition-all duration-300 flex items-center justify-center gap-2">
               <span>Get Started</span>
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
             </button>
@@ -333,7 +333,7 @@ function SpecializedServiceCard({ service, index }: { service: typeof specialize
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="relative group"
     >
-      <div className="relative h-full bg-white dark:bg-dark-200/50 backdrop-blur-sm border border-ocean-300 dark:border-white/10 p-6 transition-all duration-300 hover:border-primary-light dark:hover:border-primary hover:shadow-lg dark:shadow-none overflow-hidden">
+      <div className="relative h-full bg-white dark:bg-dark-200/50 backdrop-blur-sm border border-ocean-200 dark:border-white/10 p-6 transition-all duration-300 hover:border-primary-light/40 dark:hover:border-primary/40 hover:shadow-lg dark:shadow-none overflow-hidden">
         
         <div className="absolute top-0 right-0 w-32 h-32 bg-primary-light/5 dark:bg-primary/5 blur-2xl rounded-full transition-all duration-300 group-hover:scale-150" />
 
@@ -376,10 +376,25 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-light-100 dark:bg-dark-100">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-light/5 via-transparent to-transparent dark:from-primary/5" />
-        <div className="pointer-events-none absolute top-0 left-1/4 w-[50rem] h-[50rem] bg-primary-light/10 dark:bg-primary/10 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 right-1/4 w-[45rem] h-[45rem] bg-accent-light/10 dark:bg-accent/10 blur-3xl" />
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white dark:bg-dark-100">
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(0,107,125,0.08) 1px, transparent 1px),linear-gradient(90deg, rgba(0,107,125,0.08) 1px, transparent 1px)",
+              backgroundSize: "100px 100px",
+            }}
+          />
+          <div
+            className="absolute inset-0 hidden dark:block"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(0,240,255,0.08) 1px, transparent 1px),linear-gradient(90deg, rgba(0,240,255,0.08) 1px, transparent 1px)",
+              backgroundSize: "100px 100px",
+            }}
+          />
+        </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -389,7 +404,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary-light/20 dark:border-primary/20 bg-primary-light/10 dark:bg-primary/5 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary-light/30 dark:border-primary/20 bg-primary-light/10 dark:bg-primary/5 rounded-full mb-6">
               <Rocket className="w-4 h-4 text-primary-light dark:text-primary" />
               <span className="text-xs font-bold text-primary-light dark:text-primary uppercase tracking-wide">
                 Services & Solutions
@@ -398,7 +413,7 @@ export default function ServicesPage() {
 
             <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight text-ocean-900 dark:text-white">
               We Build{" "}
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary-light via-ocean-400 to-accent-light dark:from-primary dark:via-emerald-300 dark:to-accent">
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary-light via-teal-400 to-accent-light dark:from-primary dark:via-emerald-300 dark:to-accent">
                 Everything Digital
               </span>
             </h1>
@@ -423,7 +438,7 @@ export default function ServicesPage() {
               </a>
             </div>
 
-            <div className="mt-12 flex items-center justify-center gap-8 text-sm">
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-primary-light dark:text-primary" />
                 <span className="text-ocean-600 dark:text-white/60">Fast Delivery</span>
@@ -434,7 +449,7 @@ export default function ServicesPage() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-primary-light dark:text-primary" />
-                <span className="text-ocean-600 dark:text-white/60">1 Year Free Support</span>
+                <span className="text-ocean-600 dark:text-white/60">3 Months Free Support</span>
               </div>
             </div>
           </motion.div>
@@ -443,7 +458,9 @@ export default function ServicesPage() {
 
       {/* Core Services */}
       <section className="relative py-20 lg:py-28 bg-white dark:bg-dark-100">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="pointer-events-none absolute top-1/4 right-1/4 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary-light/5 dark:bg-primary/5 blur-3xl" />
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-ocean-900 dark:text-white">
               Core Service Packages
@@ -462,8 +479,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Specialized Services */}
-      <section className="relative py-20 lg:py-28 bg-light-100 dark:bg-dark-200">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-light/3 dark:via-primary/2 to-transparent" />
+      <section className="relative py-20 lg:py-28 bg-light-100 dark:bg-dark-200/30">
+        <div className="pointer-events-none absolute top-1/4 right-1/4 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary-light/5 dark:bg-primary/5 blur-3xl" />
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -503,7 +520,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-light-100 dark:bg-dark-200/50 backdrop-blur-sm border border-ocean-300 dark:border-white/10 p-6 text-center hover:border-primary-light dark:hover:border-primary transition-all duration-300 hover:shadow-lg dark:shadow-none"
+                className="bg-light-100 dark:bg-dark-200/50 backdrop-blur-sm border border-ocean-200 dark:border-white/10 p-6 text-center hover:border-primary-light/40 dark:hover:border-primary/40 transition-all duration-300 hover:shadow-lg dark:shadow-none"
               >
                 <div className="text-2xl font-bold text-ocean-900 dark:text-white mb-2">
                   {platform.name}
@@ -521,7 +538,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Add-Ons */}
-      <section className="relative py-20 lg:py-28 bg-light-100 dark:bg-dark-200">
+      <section className="relative py-20 lg:py-28 bg-light-100 dark:bg-dark-200/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-ocean-900 dark:text-white">
@@ -540,7 +557,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.03 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-between bg-white dark:bg-dark-200/50 backdrop-blur-sm border border-ocean-300 dark:border-white/10 px-6 py-4 hover:border-primary-light dark:hover:border-primary transition-all duration-300 shadow-sm dark:shadow-none"
+                className="flex items-center justify-between bg-white dark:bg-dark-200/50 backdrop-blur-sm border border-ocean-200 dark:border-white/10 px-6 py-4 hover:border-primary-light/40 dark:hover:border-primary/40 transition-all duration-300 shadow-sm dark:shadow-none"
               >
                 <span className="text-sm font-medium text-ocean-700 dark:text-white/80">
                   {addon.name}
@@ -592,7 +609,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <div className="flex-1 bg-white dark:bg-dark-200/50 backdrop-blur-sm border border-ocean-300 dark:border-white/10 p-6 shadow-sm dark:shadow-none">
+                  <div className="flex-1 bg-white dark:bg-dark-200/50 backdrop-blur-sm border border-ocean-200 dark:border-white/10 p-6 shadow-sm dark:shadow-none">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="font-display text-xl font-bold text-ocean-900 dark:text-white">
                         {step.title}
