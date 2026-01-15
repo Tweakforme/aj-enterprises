@@ -46,7 +46,7 @@ const coreServices = [
       "Contact Forms & Maps",
       "Basic SEO Setup",
       "Fast Loading Speed",
-      "1 Year Free Maintenance",
+      "3 months of Free Maintenance",
       "2 Rounds of Revisions",
       "Analytics Setup",
     ],
@@ -72,7 +72,7 @@ const coreServices = [
       "Email Notifications",
       "Shipping Integration",
       "Advanced SEO",
-      "1 Year Free Maintenance",
+      "3 months of Free Maintenance",
       "3 Rounds of Revisions",
     ],
     ideal: ["Product Sellers", "Dropshippers", "Retailers", "Brand Owners"],
@@ -97,7 +97,7 @@ const coreServices = [
       "Multi-User Systems",
       "Real-Time Features",
       "Cloud Infrastructure",
-      "1 Year Free Maintenance",
+      "3 months of Free Maintenance",
       "Unlimited Dev Revisions",
     ],
     ideal: ["SaaS Companies", "Startups", "Enterprises", "Complex Projects"],
@@ -241,7 +241,7 @@ const processSteps = [
   {
     number: "05",
     title: "Launch & Support",
-    description: "We handle deployment, testing, and provide 1 year of free maintenance.",
+    description: "We handle deployment, testing, and provide 3 months of free maintenance.",
     duration: "1-2 days",
   },
 ];
@@ -420,7 +420,7 @@ export default function ServicesPage() {
 
             <p className="text-lg sm:text-xl text-ocean-600 dark:text-white/60 leading-relaxed mb-8 max-w-3xl mx-auto">
               From simple websites to complex web applications — professional development with 
-              transparent pricing, no hidden fees, and <span className="text-ocean-900 dark:text-white font-bold">1 year of free maintenance</span> included.
+              transparent pricing, no hidden fees, and <span className="text-ocean-900 dark:text-white font-bold">3 months of free maintenance</span> included.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
