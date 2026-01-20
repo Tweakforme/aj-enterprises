@@ -336,7 +336,7 @@ export default function TermsPage() {
                   <div className="space-y-6">
                     {section.content.map((item, itemIndex) => (
                       <div key={itemIndex} className="pl-0 sm:pl-16">
-                        {item.subtitle && (
+                        {"subtitle" in item && item.subtitle && (
                           <h3 className="font-display text-base font-bold text-ocean-800 dark:text-white/90 mb-2">
                             {item.subtitle}
                           </h3>
