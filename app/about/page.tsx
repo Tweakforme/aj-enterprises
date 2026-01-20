@@ -84,21 +84,21 @@ export default function AboutPage() {
                   Fast delivery. Quality code. Measurable results.
                 </p>
                 <p>
-                  Hey! I am AJ (on the right). We're a team of four developers delivering enterprise-grade
+                  Hey! I am AJ. We're a team of four developers delivering enterprise-grade
                   web solutions with startup agility. Specializing in Shopify,
-                  Next.js, and AI-powered development — we build sites that
+                  Next.js, and AI-powered development, we build sites that
                   convert visitors into customers.
                 </p>
                 <p>
                   Every project includes technical SEO, performance
                   optimization, and conversion-focused design. We don't just
-                  code — we architect digital experiences that generate revenue.
+                  code, we architect digital experiences that generate revenue.
                 </p>
                 <p>
                   <span className="text-ocean-900 dark:text-white font-semibold transition-colors duration-300">
                     Starting at $500
                   </span>{" "}
-                  with one full year of maintenance included. No hidden fees, no
+                  with 3 to 6 months of maintenance included depending on the project. No hidden fees, no
                   surprises.
                 </p>
               </div>
@@ -172,7 +172,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {[
               { k: "48hr", d: "Average turnaround for standard builds" },
-              { k: "$500", d: "Start price • 12 months maintenance" },
+              { k: "$500", d: "Start price • 3 to 6 months of free maintenance" },
               { k: "100%", d: "Focus on conversion & performance" },
             ].map((item, i) => (
               <motion.div

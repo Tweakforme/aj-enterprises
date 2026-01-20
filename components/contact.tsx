@@ -64,7 +64,7 @@ export default function Contact() {
                   href="mailto:hello@orcaenterprises.com" 
                   className="text-xl font-display font-bold text-ocean-800 dark:text-white hover:text-primary-light dark:hover:text-primary transition-colors duration-300"
                 >
-                  hello@orcaenterprises.com
+                  aj@orcaenterprises.ca
                 </a>
               </div>
 

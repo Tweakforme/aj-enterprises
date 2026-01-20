@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, X } from "lucide-react";
 import { useTheme } from "@/app/context/ThemeContext";
 
 const navLinks = [
   { name: "Work", href: "/work" },
   { name: "Services", href: "/services" },
+  { name: "Calculator", href: "/calculator" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -246,6 +247,15 @@ export default function Navbar() {
                         Enterprises Inc.
                       </span>
                     </div>
+                    <motion.button
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      whileHover={{ scale: 1.1, rotate: 90 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-gray-200 dark:bg-dark-300 border border-gray-300 dark:border-primary/20 flex items-center justify-center hover:bg-primary-light/10 dark:hover:bg-primary/10 transition-colors duration-300"
+                      aria-label="Close menu"
+                    >
+                      <X className="w-5 h-5 text-gray-700 dark:text-white/70" />
+                    </motion.button>
                   </div>
                 </div>
 

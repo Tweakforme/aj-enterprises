@@ -46,7 +46,7 @@ const coreServices = [
       "Contact Forms & Maps",
       "Basic SEO Setup",
       "Fast Loading Speed",
-      "3 months of Free Maintenance",
+      "6 months of Free Maintenance",
       "2 Rounds of Revisions",
       "Analytics Setup",
     ],
@@ -188,14 +188,14 @@ const specializedServices = [
 
 // Platform Expertise
 const platforms = [
-  { name: "Shopify", experience: "Expert", projects: "25+" },
-  { name: "Next.js", experience: "Expert", projects: "20+" },
-  { name: "WordPress", experience: "Advanced", projects: "30+" },
-  { name: "React", experience: "Expert", projects: "35+" },
-  { name: "WooCommerce", experience: "Advanced", projects: "15+" },
-  { name: "Wix", experience: "Advanced", projects: "10+" },
-  { name: "Squarespace", experience: "Intermediate", projects: "8+" },
-  { name: "Webflow", experience: "Intermediate", projects: "5+" },
+  { name: "Shopify", experience: "Expert", projects: "3+" },
+  { name: "Next.js", experience: "Expert", projects: "4+" },
+  { name: "WordPress", experience: "Advanced", projects: "1" },
+  { name: "React", experience: "Expert", projects: "4+" },
+  { name: "WooCommerce", experience: "Advanced", projects: "1" },
+  { name: "Wix", experience: "Advanced", projects: "1" },
+  { name: "Squarespace", experience: "Intermediate", projects: "1" },
+  { name: "Webflow", experience: "Intermediate", projects: "1" },
 ];
 
 // Add-ons
@@ -230,7 +230,7 @@ const processSteps = [
     number: "03",
     title: "Design & Development",
     description: "We build your site with regular check-ins and progress updates.",
-    duration: "5-30 days",
+    duration: "5-90 days",
   },
   {
     number: "04",
@@ -419,8 +419,8 @@ export default function ServicesPage() {
             </h1>
 
             <p className="text-lg sm:text-xl text-ocean-600 dark:text-white/60 leading-relaxed mb-8 max-w-3xl mx-auto">
-              From simple websites to complex web applications — professional development with 
-              transparent pricing, no hidden fees, and <span className="text-ocean-900 dark:text-white font-bold">3 months of free maintenance</span> included.
+              From simple websites to complex web applications — professional development with
+              transparent pricing, no hidden fees, and <span className="text-ocean-900 dark:text-white font-bold">up to 6 months of free maintenance</span> included.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -449,7 +449,7 @@ export default function ServicesPage() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-primary-light dark:text-primary" />
-                <span className="text-ocean-600 dark:text-white/60">3 Months Free Support</span>
+                <span className="text-ocean-600 dark:text-white/60">Up to 6 Months Free Support</span>
               </div>
             </div>
           </motion.div>
@@ -619,7 +619,7 @@ export default function ServicesPage() {
                       </span>
                     </div>
                     <p className="text-ocean-600 dark:text-white/70">
-                      {step.description}
+                      {step.description.replace("3 months", "up to 6 months")}
                     </p>
                   </div>
                 </div>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Linkedin, Github, Twitter, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,28 +20,67 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-ocean-600 dark:text-white/60 max-w-md mb-6 leading-relaxed">
-              Building exceptional digital experiences for ambitious brands. 
-              Shopify development and high-performance web applications.
+              Building exceptional digital experiences for ambitious brands.
+              Professional web development, e-commerce solutions, and technical consulting.
             </p>
-            <div className="flex gap-4">
-              {[
-                { name: "LinkedIn", href: "#", icon: "in" },
-                { name: "GitHub", href: "#", icon: "gh" },
-                { name: "Twitter", href: "#", icon: "tw" },
-              ].map((social) => (
-                <motion.a
-                  key={social.name}
-                  href={social.href}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 border border-ocean-300 dark:border-white/20 flex items-center justify-center hover:border-primary-light dark:hover:border-primary hover:bg-primary-light/10 dark:hover:bg-primary/10 transition-all duration-300 group"
-                  aria-label={social.name}
-                >
-                  <span className="text-xs font-semibold text-ocean-600 dark:text-white/70 group-hover:text-primary-light dark:group-hover:text-primary transition-colors">
-                    {social.icon}
-                  </span>
-                </motion.a>
-              ))}
+
+            {/* Contact Info */}
+            <div className="space-y-2 mb-6">
+              <a
+                href="mailto:aj@orcaenterprises.ca"
+                className="flex items-center gap-2 text-sm text-ocean-600 dark:text-white/60 hover:text-primary-light dark:hover:text-primary transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                <span>aj@orcaenterprises.ca</span>
+              </a>
+              <a
+                href="tel:+14031234567"
+                className="flex items-center gap-2 text-sm text-ocean-600 dark:text-white/60 hover:text-primary-light dark:hover:text-primary transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                <span>+1 (250)-299-5013</span>
+              </a>
+              <div className="flex items-center gap-2 text-sm text-ocean-600 dark:text-white/60">
+                <MapPin className="w-4 h-4" />
+                <span>Calgary, Alberta, Canada</span>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex gap-3">
+              <motion.a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-10 h-10 border border-ocean-300 dark:border-white/20 flex items-center justify-center hover:border-primary-light dark:hover:border-primary hover:bg-primary-light/10 dark:hover:bg-primary/10 transition-all duration-300 group"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4 text-ocean-600 dark:text-white/70 group-hover:text-primary-light dark:group-hover:text-primary transition-colors" />
+              </motion.a>
+              <motion.a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-10 h-10 border border-ocean-300 dark:border-white/20 flex items-center justify-center hover:border-primary-light dark:hover:border-primary hover:bg-primary-light/10 dark:hover:bg-primary/10 transition-all duration-300 group"
+                aria-label="GitHub"
+              >
+                <Github className="w-4 h-4 text-ocean-600 dark:text-white/70 group-hover:text-primary-light dark:group-hover:text-primary transition-colors" />
+              </motion.a>
+              <motion.a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-10 h-10 border border-ocean-300 dark:border-white/20 flex items-center justify-center hover:border-primary-light dark:hover:border-primary hover:bg-primary-light/10 dark:hover:bg-primary/10 transition-all duration-300 group"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-4 h-4 text-ocean-600 dark:text-white/70 group-hover:text-primary-light dark:group-hover:text-primary transition-colors" />
+              </motion.a>
             </div>
           </div>
 
@@ -50,7 +90,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: "Home", href: "/" },
-                { name: "Services", href: "/#services" },
+                { name: "Services", href: "/services" },
+                { name: "Calculator", href: "/calculator" },
                 { name: "Work", href: "/work" },
                 { name: "About", href: "/about" },
                 { name: "Contact", href: "/contact" },
@@ -101,14 +142,14 @@ export default function Footer() {
             © {currentYear} Orca Enterprises Inc. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link 
-              href="#" 
+            <Link
+              href="/privacy"
               className="text-ocean-500 dark:text-white/40 hover:text-primary-light dark:hover:text-primary text-sm transition-colors duration-300"
             >
               Privacy Policy
             </Link>
-            <Link 
-              href="#" 
+            <Link
+              href="/terms"
               className="text-ocean-500 dark:text-white/40 hover:text-primary-light dark:hover:text-primary text-sm transition-colors duration-300"
             >
               Terms of Service
