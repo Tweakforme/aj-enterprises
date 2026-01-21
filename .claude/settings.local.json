@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(timeout /t 5)",
+      "Bash(powershell -Command:*)",
+      "Bash(set NODE_OPTIONS=--no-warnings)",
+      "Bash(timeout /t 1)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
