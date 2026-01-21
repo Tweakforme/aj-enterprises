@@ -52,7 +52,7 @@ export default function Contact() {
 
             <p className="text-lg text-ocean-600 dark:text-white/60 leading-relaxed mb-12">
               Have a project in mind? Whether it's a complete store build, 
-              performance optimization, or ongoing support — let's talk about 
+              performance optimization, or ongoing support, let's talk about 
               how we can work together.
             </p>
 
@@ -61,10 +61,10 @@ export default function Contact() {
               <div>
                 <h3 className="text-sm font-semibold text-ocean-500 dark:text-white/40 mb-2">EMAIL</h3>
                 <a 
-                  href="mailto:hello@orcaenterprises.com" 
+                  href="mailto:adhvait.jadav@gmail.com" 
                   className="text-xl font-display font-bold text-ocean-800 dark:text-white hover:text-primary-light dark:hover:text-primary transition-colors duration-300"
                 >
-                  aj@orcaenterprises.ca
+                  adhvait.jadav@gmail.com
                 </a>
               </div>
 
@@ -181,10 +181,10 @@ export default function Contact() {
                     className="w-full px-4 py-4 bg-light-200 dark:bg-dark-300/50 border border-ocean-300 dark:border-white/10 text-ocean-900 dark:text-white focus:border-primary-light dark:focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary-light/20 dark:focus:ring-primary/20 transition-all duration-300"
                   >
                     <option value="" className="bg-white dark:bg-dark-300">Select budget range</option>
-                    <option value="<5k" className="bg-white dark:bg-dark-300">&lt; $5,000</option>
-                    <option value="5k-10k" className="bg-white dark:bg-dark-300">$5,000 - $10,000</option>
-                    <option value="10k-25k" className="bg-white dark:bg-dark-300">$10,000 - $25,000</option>
-                    <option value="25k+" className="bg-white dark:bg-dark-300">$25,000+</option>
+                    <option value="<5k" className="bg-white dark:bg-dark-300">&lt; $1,000</option>
+                    <option value="5k-10k" className="bg-white dark:bg-dark-300">$1,000 - $2,500</option>
+                    <option value="10k-25k" className="bg-white dark:bg-dark-300">$2,500 - $5,000</option>
+                    <option value="25k+" className="bg-white dark:bg-dark-300">$5,000+</option>
                   </select>
                 </div>
 
