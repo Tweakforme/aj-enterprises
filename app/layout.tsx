@@ -5,6 +5,7 @@ import CustomCursor from "@/components/custom-cursor";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Providers } from "./providers";
+import { OrganizationSchema, LocalBusinessSchema, WebsiteSchema } from "@/components/structured-data";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +44,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        <OrganizationSchema />
+        <LocalBusinessSchema />
+        <WebsiteSchema />
+      </head>
       <body className="relative">
         <Providers>
           <CustomCursor />

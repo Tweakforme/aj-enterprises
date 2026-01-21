@@ -155,13 +155,13 @@ export default function Navbar() {
             </div>
 
             {/* Mobile: Theme Toggle + Menu Button */}
-            <div className="lg:hidden flex items-center gap-3 relative z-50">
-              {/* Mobile Theme Toggle */}
+            <div className="lg:hidden flex items-center gap-2 relative z-50">
+              {/* Mobile Theme Toggle - 44x44px for better touch */}
               <motion.button
                 onClick={toggleTheme}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 rounded-full bg-gray-200 dark:bg-dark-300 border border-gray-300 dark:border-primary/20 flex items-center justify-center"
+                className="w-11 h-11 rounded-full bg-gray-200 dark:bg-dark-300 border border-gray-300 dark:border-primary/20 flex items-center justify-center"
                 aria-label="Toggle theme"
               >
                <AnimatePresence mode="wait">
@@ -173,7 +173,7 @@ export default function Navbar() {
       exit={{ rotate: 90, opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Sun className="w-4 h-4 text-accent-light dark:text-accent" />
+      <Sun className="w-5 h-5 text-accent-light dark:text-accent" />
     </motion.div>
   ) : (
     <motion.div
@@ -183,16 +183,16 @@ export default function Navbar() {
       exit={{ rotate: -90, opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Moon className="w-4 h-4 text-primary-light dark:text-primary" />
+      <Moon className="w-5 h-5 text-primary-light dark:text-primary" />
     </motion.div>
   )}
 </AnimatePresence>
               </motion.button>
 
-              {/* Mobile Menu Button */}
+              {/* Mobile Menu Button - 44x44px for better touch */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+                className="w-11 h-11 flex flex-col items-center justify-center gap-1.5"
                 aria-label="Toggle menu"
               >
                 <motion.span
@@ -251,24 +251,24 @@ export default function Navbar() {
                       onClick={() => setIsMobileMenuOpen(false)}
                       whileHover={{ scale: 1.1, rotate: 90 }}
                       whileTap={{ scale: 0.9 }}
-                      className="w-10 h-10 rounded-full bg-gray-200 dark:bg-dark-300 border border-gray-300 dark:border-primary/20 flex items-center justify-center hover:bg-primary-light/10 dark:hover:bg-primary/10 transition-colors duration-300"
+                      className="w-11 h-11 rounded-full bg-gray-200 dark:bg-dark-300 border border-gray-300 dark:border-primary/20 flex items-center justify-center hover:bg-primary-light/10 dark:hover:bg-primary/10 transition-colors duration-300"
                       aria-label="Close menu"
                     >
-                      <X className="w-5 h-5 text-gray-700 dark:text-white/70" />
+                      <X className="w-6 h-6 text-gray-700 dark:text-white/70" />
                     </motion.button>
                   </div>
                 </div>
 
-                {/* Links */}
-                <div className="flex-1 flex flex-col justify-center px-8 py-12">
-                  <div className="space-y-8">
+                {/* Links - Optimized touch targets with minimum 44px height */}
+                <div className="flex-1 flex flex-col justify-center px-6 py-8 sm:px-8 sm:py-12">
+                  <div className="space-y-4 sm:space-y-6">
                     {navLinks.map((link, index) => (
                       <motion.div
                         key={link.name}
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ 
-                          duration: 0.5, 
+                        transition={{
+                          duration: 0.5,
                           delay: index * 0.1,
                           ease: [0.16, 1, 0.3, 1]
                         }}
@@ -276,7 +276,7 @@ export default function Navbar() {
                         <Link
                           href={link.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="block text-3xl sm:text-4xl font-display font-bold text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover:translate-x-2 group"
+                          className="block py-3 text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover:translate-x-2 group"
                         >
                           <span className="relative inline-block">
                             {link.name}
