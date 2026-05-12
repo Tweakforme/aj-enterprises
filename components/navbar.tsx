@@ -36,14 +36,19 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-white/88 dark:bg-[#080e1c]/90 backdrop-blur-2xl border-b border-black/8 dark:border-white/8 shadow-sm"
             : "bg-transparent"
         }`}
+        style={{
+          WebkitTransform: "translate3d(0,0,0)",
+          transform: "translate3d(0,0,0)",
+          paddingTop: "env(safe-area-inset-top)",
+        }}
       >
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-[64px] sm:h-[72px] lg:h-[88px]">
