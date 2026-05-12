@@ -175,6 +175,60 @@ export function ServiceSchema() {
   );
 }
 
+export function ReviewSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'ORCA Enterprises Inc.',
+    url: 'https://orcaenterprises.ca',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      reviewCount: '7',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    review: [
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Rentals Kamloops Team' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'ORCA built our property rental platform from scratch. Fast, clean, and exactly what we needed. The site has been running flawlessly since launch.',
+        datePublished: '2024-06-01',
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Chilly Moose' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'Our Shopify store has never looked or performed better. ORCA understood our brand and delivered a high-converting store that reflects who we are.',
+        datePublished: '2024-09-15',
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Furtraits' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'ORCA transformed our Shopify store into a conversion machine. Sales went up immediately after launch. Incredibly professional team.',
+        datePublished: '2024-11-01',
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Hodder Construction' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'Professional, fast, and responsive. Our new website has brought in significantly more leads. Highly recommend ORCA for any business.',
+        datePublished: '2024-04-20',
+      },
+    ],
+  };
+
+  return (
+    <Script
+      id="review-schema"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function BreadcrumbSchema({ items }: { items: Array<{ name: string; url: string }> }) {
   const schema = {
     '@context': 'https://schema.org',

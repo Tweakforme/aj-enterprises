@@ -5,7 +5,7 @@ import CustomCursor from "@/components/custom-cursor";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Providers } from "./providers";
-import { OrganizationSchema, LocalBusinessSchema, WebsiteSchema } from "@/components/structured-data";
+import { OrganizationSchema, LocalBusinessSchema, WebsiteSchema, ReviewSchema, ServiceSchema } from "@/components/structured-data";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,20 +20,54 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "ORCA Enterprises Inc. | Premium Shopify & Web Development",
-  description: "Transform your online presence with custom Shopify stores, high-performance web applications, and conversion-focused design. Calgary-based, globally available.",
-  keywords: ["Shopify development", "web development", "e-commerce", "Next.js", "Calgary developer"],
+  title: "ORCA Enterprises Inc. | Shopify Developer Calgary",
+  description: "Calgary-based Shopify developer & web development agency. Custom Shopify stores, Next.js apps, and e-commerce solutions. Serving Canada & worldwide. Starting at $500.",
+  keywords: [
+    "Shopify developer Calgary",
+    "Shopify developer Canada",
+    "Shopify store developer",
+    "Shopify expert Canada",
+    "web developer Calgary",
+    "web development Calgary",
+    "e-commerce developer Calgary",
+    "custom Shopify store",
+    "Shopify development agency",
+    "Calgary web design",
+    "Next.js developer Calgary",
+    "WooCommerce developer Calgary",
+    "small business website Calgary",
+    "e-commerce website Canada",
+    "ORCA Enterprises",
+  ],
   authors: [{ name: "ORCA Enterprises Inc." }],
+  creator: "ORCA Enterprises Inc.",
+  publisher: "ORCA Enterprises Inc.",
+  metadataBase: new URL("https://orcaenterprises.ca"),
+  alternates: { canonical: "https://orcaenterprises.ca" },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
     apple: '/favicon.ico',
   },
   openGraph: {
-    title: "ORCA Enterprises Inc. | Premium Shopify & Web Development",
-    description: "Transform your online presence with custom Shopify stores and high-performance web applications.",
+    title: "ORCA Enterprises Inc. | Shopify Developer Calgary",
+    description: "Calgary-based Shopify developer & web development agency. Custom Shopify stores, Next.js apps, and e-commerce solutions. Starting at $500.",
     type: "website",
+    locale: "en_CA",
+    url: "https://orcaenterprises.ca",
+    siteName: "ORCA Enterprises Inc.",
+    images: [{ url: '/logo.jpg', width: 1200, height: 630, alt: "ORCA Enterprises Inc." }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ORCA Enterprises Inc. | Shopify Developer Calgary",
+    description: "Calgary-based Shopify developer & web development agency. Starting at $500.",
     images: ['/logo.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
 };
 
@@ -48,6 +82,8 @@ export default function RootLayout({
         <OrganizationSchema />
         <LocalBusinessSchema />
         <WebsiteSchema />
+        <ReviewSchema />
+        <ServiceSchema />
       </head>
       <body className="relative">
         <Providers>
