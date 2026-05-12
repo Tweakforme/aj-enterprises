@@ -32,16 +32,23 @@ export default function ThemeToggle({ size = "md" }: { size?: "md" | "sm" }) {
   const outerR = innerR + 9;      // ray tip
 
   return (
+    /* Wrapper only takes the button's footprint in layout — SVG overflows visually */
     <div
       className="relative flex items-center justify-center"
-      style={{ width: svgPx, height: svgPx }}
+      style={{ width: btnPx, height: btnPx }}
     >
-      {/* Decoration SVG — sits behind/around the button, overflow visible */}
+      {/* Decoration SVG — centred absolutely, overflow visible so rays/stars spill out */}
       <svg
         width={svgPx}
         height={svgPx}
-        className="absolute inset-0 pointer-events-none"
-        style={{ overflow: "visible" }}
+        className="absolute pointer-events-none"
+        style={{
+          overflow: "visible",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 0,
+        }}
       >
         <AnimatePresence>
           {/* ── SUN RAYS (light mode) ── */}
@@ -93,33 +100,17 @@ export default function ThemeToggle({ size = "md" }: { size?: "md" | "sm" }) {
         </AnimatePresence>
       </svg>
 
-      {/* Glow ring */}
-      <AnimatePresence>
-        <motion.div
-          key={isDark ? "glow-dark" : "glow-light"}
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            width: btnPx + 12,
-            height: btnPx + 12,
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div
-            className="w-full h-full rounded-full"
-            style={{
-              boxShadow: isDark
-                ? "0 0 18px 4px rgba(120,180,255,0.25)"
-                : "0 0 18px 4px rgba(255,200,30,0.35)",
-            }}
-          />
-        </motion.div>
-      </AnimatePresence>
+      {/* Glow ring — sits directly behind the button */}
+      <motion.div
+        key={isDark ? "glow-dark" : "glow-light"}
+        className="absolute inset-0 rounded-full pointer-events-none"
+        animate={{
+          boxShadow: isDark
+            ? "0 0 16px 4px rgba(120,180,255,0.22)"
+            : "0 0 16px 4px rgba(255,200,30,0.32)",
+        }}
+        transition={{ duration: 0.5 }}
+      />
 
       {/* Button */}
       <motion.button
