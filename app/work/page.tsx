@@ -19,14 +19,24 @@ const projects = [
     results: ["20+ active listings", "50% faster load time", "Mobile-first design"],
   },
   {
-    title: "The EV Store",
-    url: "theevstore.ca",
-    fullUrl: "https://theevstore.ca",
-    description: "E-commerce platform for Tesla products and EV accessories. Full shopping cart, payment processing, and inventory management.",
-    category: "E-Commerce",
-    tags: ["Shopify", "E-Commerce", "Payment Integration"],
-    image: "/theevstore.png",
-    results: ["Secure checkout", "Real-time inventory", "Multi-currency support"],
+    title: "Chilly Moose",
+    url: "chillymoose.ca",
+    fullUrl: "https://chillymoose.ca",
+    description: "Premium Canadian outdoor brand selling insulated coolers and drinkware. High-converting Shopify store featuring partnership branding (Curling Canada, Calgary Flames) and a tree-planting initiative.",
+    category: "Shopify Store",
+    tags: ["Shopify", "E-Commerce", "Brand Partnerships"],
+    image: "/chillymoose.png",
+    results: ["High-converting product pages", "Partnership brand integration", "Mobile-optimized shopping"],
+  },
+  {
+    title: "Furtraits",
+    url: "furtraits.com",
+    fullUrl: "https://furtraits.com",
+    description: "Custom pet portrait Shopify store turning pet photos into hand-drawn masterpieces. Fast 12-hour turnaround, 98% satisfaction rate, and optimized product pages driving consistent conversions.",
+    category: "Shopify Store",
+    tags: ["Shopify", "Custom Products", "Conversion Optimized"],
+    image: "/furtraits.png",
+    results: ["98% customer satisfaction", "12-hour turnaround system", "Conversion-optimized checkout"],
   },
   {
     title: "Hodder Construction",
@@ -37,16 +47,6 @@ const projects = [
     tags: ["WordPress", "SEO", "Mobile-First"],
     image: "/hodder.png",
     results: ["#1 Google ranking locally", "45% increase in leads", "modern design"],
-  },
-  {
-    title: "EV Cars Marketplace",
-    url: "cars.theevstore.ca",
-    fullUrl: "https://cars.theevstore.ca",
-    description: "Car listing platform for electric vehicles. Browse inventory, compare specs, and find your perfect EV with advanced search.",
-    category: "Marketplace",
-    tags: ["Next.js", "Database", "Search & Filter"],
-    image: "/cars.png",
-    results: ["Advanced filters", "Real-time updates", "Interactive comparison"],
   },
   {
     title: "Advanced Plumbing",
@@ -266,7 +266,7 @@ export default function WorkPage() {
             </h1>
 
             <p className="text-base sm:text-lg lg:text-xl text-ocean-600 dark:text-white/60 max-w-3xl mx-auto leading-relaxed mb-10 sm:mb-12 transition-colors duration-300">
-              From small business websites to complex web applications — every project is crafted
+              From small business websites to complex web applications - every project is crafted
               with precision, optimized for performance, and designed to drive real business results.
             </p>
 
@@ -444,8 +444,8 @@ export default function WorkPage() {
 
               <p className="text-base sm:text-lg text-ocean-600 dark:text-gray-400 mb-8 sm:mb-10 leading-relaxed transition-colors duration-300">
                 Professional web development starting at{" "}
-                <span className="text-ocean-900 dark:text-white font-bold text-lg sm:text-xl transition-colors duration-300">$500</span> — including
-                one full year of maintenance, support, and optimization. No hidden fees.
+                <span className="text-ocean-900 dark:text-white font-bold text-lg sm:text-xl transition-colors duration-300">$500</span> - including
+                3 months of maintenance, support, and optimization. No hidden fees.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center">

@@ -18,14 +18,24 @@ const projects = [
     image: "/rentals.png",
   },
   {
-    title: "The EV Store",
-    url: "theevstore.ca",
-    fullUrl: "https://theevstore.ca",
+    title: "Chilly Moose",
+    url: "chillymoose.ca",
+    fullUrl: "https://chillymoose.ca",
     description:
-      "E-commerce platform for Tesla products and EV accessories. Full shopping cart, payment processing, and inventory management.",
-    category: "E-Commerce",
-    tags: ["Shopify", "E-Commerce", "Payment Integration"],
-    image: "/theevstore.png",
+      "Premium Canadian outdoor brand selling insulated coolers and drinkware. High-converting Shopify store featuring partnership branding (Curling Canada, Calgary Flames) and a tree-planting initiative.",
+    category: "Shopify Store",
+    tags: ["Shopify", "E-Commerce", "Brand Partnerships"],
+    image: "/chillymoose.png",
+  },
+  {
+    title: "Furtraits",
+    url: "furtraits.com",
+    fullUrl: "https://furtraits.com",
+    description:
+      "Custom pet portrait Shopify store turning pet photos into hand-drawn masterpieces. Fast 12-hour turnaround, 98% satisfaction rate, and optimized product pages driving consistent conversions.",
+    category: "Shopify Store",
+    tags: ["Shopify", "Custom Products", "Conversion Optimized"],
+    image: "/furtraits.png",
   },
   {
     title: "Hodder Construction",
@@ -36,16 +46,6 @@ const projects = [
     category: "Business Website",
     tags: ["WordPress", "SEO", "Mobile-First"],
     image: "/hodder.png",
-  },
-  {
-    title: "EV Cars Marketplace",
-    url: "cars.theevstore.ca",
-    fullUrl: "https://cars.theevstore.ca",
-    description:
-      "Car listing platform for electric vehicles. Browse inventory, compare specs, and find your perfect EV with advanced search.",
-    category: "Marketplace",
-    tags: ["Next.js", "Database", "Search & Filter"],
-    image: "/cars.png",
   },
   {
     title: "Advanced Plumbing",
