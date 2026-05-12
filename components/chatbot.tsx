@@ -53,18 +53,50 @@ function respond(text: string, ctx: Ctx): { reply: string; nextCtx: Ctx } {
   }
   const hey = next.userName ? `${next.userName}, ` : "";
 
+  // ── Bot / AI disclosure ──
+  if (/are you (a bot|real|human|ai|a person|automated)|am i (talking to|chatting with) (a bot|ai|real|human|a person)|is this (a bot|ai|automated|real)/.test(t)) {
+    return {
+      reply: `Yeah, I'm an automated assistant for ORCA Enterprises, not a real human. That said, I can answer most things about our services. If you want to talk to an actual person, hit up orcaenterprises.ca/contact and Adhvait will get back to you personally, usually the same day.`,
+      nextCtx: next,
+    };
+  }
+
+  // ── Who does the work ──
+  if (/who (does|would|handles|will do|works on|builds|codes|makes|is doing)|who('s| is) (doing|responsible|in charge|handling|building|making|behind)|is it (you|one person|a team|just you|just one)|how many people|is this (one person|a team)|who.s (behind|running|doing)/.test(t)) {
+    return {
+      reply: `${hey}Adhvait Jadav owns and runs ORCA Enterprises and handles the builds personally. It's not a big agency where your project gets passed off to a junior. You work directly with the person doing the actual work, which means faster communication and nothing gets lost. Depending on the scope, he brings in specialists for things like copywriting or photography if the project needs it.`,
+      nextCtx: next,
+    };
+  }
+
+  // ── Process / how it works ──
+  if (/how does (it|this) work|what.s the process|what are the steps|how do (i|we) get started|where do (i|we) start|what happens (after|next|when)|walk me through|what.s (involved|next)/.test(t)) {
+    return {
+      reply: `${hey}Pretty straightforward. You reach out through the contact page, there's a quick call to talk about your goals and scope, then you get a proposal with a fixed price and timeline. No hourly billing, no surprises. Once you approve it, work starts and you get updates throughout. There's a review stage before anything goes live so you can give feedback. After launch, free maintenance is included.`,
+      nextCtx: next,
+    };
+  }
+
+  // ── Location ──
+  if (/where (are you|is orca|do you (operate|work)|are you based)|calgary|alberta|canada|local (business|agency|dev)|are you (local|remote|in canada)/.test(t)) {
+    return {
+      reply: `${hey}Based in Calgary, Alberta. Clients are all over Canada and the US and we handle everything remotely, so location is never an issue. If you're in Calgary and want to meet in person though, that's always an option.`,
+      nextCtx: next,
+    };
+  }
+
   // ── Just browsing / uncertain ──
   if (/just (browsing|looking|exploring|checking)|idk|i don.?t know|not sure|no idea|just here|just curious|just checking/.test(t)) {
     return {
-      reply: `No worries at all — totally fine to just look around. If anything catches your eye or you want to understand what something costs or how long it takes, I'm right here. No pressure.`,
+      reply: `No worries at all, totally fine to just look around. If anything catches your eye or you want to know what something costs or how long it takes, just ask. No pressure.`,
       nextCtx: next,
     };
   }
 
   // ── Services overview ──
-  if (/what (do you|can you) (build|make|do|offer|create|develop)|what('s| is) (your )?service|what do you (specialize|focus)|capabilities|what (kinds?|types?) of/.test(t)) {
+  if (/what (do you|can you) (build|make|do|offer|create|develop)|what('s| is) (your )?(service|specialt)|what do you (specialize|focus)|capabilities|what (kinds?|types?) of (sites?|stores?|apps?|web|projects?)/.test(t)) {
     return {
-      reply: `${hey}We build three main types of things. First, business websites — clean, fast, conversion-focused sites for service companies and brands. Second, e-commerce stores — Shopify and WooCommerce stores that are actually built to sell, not just look good. Third, custom web apps — dashboards, booking systems, marketplaces, portals. We're based in Calgary but work with clients across Canada and the US. Which of those sounds closest to what you need?`,
+      reply: `${hey}Three main things. Business websites for service companies and brands, e-commerce stores on Shopify or WooCommerce that are built to actually convert, and custom web apps like dashboards, booking systems, and marketplaces. We work with clients across Canada and the US. Which of those is closest to what you're after?`,
       nextCtx: next,
     };
   }
@@ -72,7 +104,7 @@ function respond(text: string, ctx: Ctx): { reply: string; nextCtx: Ctx } {
   // ── Build intent ──
   if (/(build|create|make|develop|need|want|get|launch|start).*(site|website|store|shop|app|web|online)|(site|website|store|shop|app|web|online).*(build|create|made|developed|built|launched|started)/.test(t)) {
     return {
-      reply: `${hey}Good — that's exactly what we do. To point you in the right direction: are you thinking e-commerce (selling products), a service/business site, or something more custom like a portal or web app? That changes the approach and budget quite a bit.`,
+      reply: `${hey}Good, that's exactly what we do. Quick question to point you in the right direction: are you thinking e-commerce (selling products), a service or business site, or something more custom like a portal or web app? The answer changes the approach and price quite a bit.`,
       nextCtx: next,
     };
   }
@@ -81,8 +113,8 @@ function respond(text: string, ctx: Ctx): { reply: string; nextCtx: Ctx } {
   if (/^(hi|hey|hello|sup|yo|howdy|good morning|good afternoon|good evening)/.test(t)) {
     return {
       reply: ctx.messageCount === 0
-        ? "Hey! Welcome to ORCA Enterprises. I'm here to help you figure out what kind of web project makes sense for your business. What are you working on right now?"
-        : `Hey ${hey}what's on your mind? I'm all ears.`,
+        ? "Hey! Welcome to ORCA Enterprises. I'm here to help figure out what kind of web project makes sense for your business. What are you working on?"
+        : `Hey ${hey}what's on your mind?`,
       nextCtx: next,
     };
   }
@@ -92,64 +124,64 @@ function respond(text: string, ctx: Ctx): { reply: string; nextCtx: Ctx } {
     next.askedPrice = true;
     if (ctx.askedPrice) {
       return {
-        reply: `${hey}Totally fair to dig deeper. Quick breakdown — a solid business website runs $500-$1,500. A Shopify or WooCommerce store is typically $800-$2,500 depending on how many products and custom features you need. Custom web apps (dashboards, booking systems, marketplaces) start at $1,200 and scale up. Every single package includes 3 months of free maintenance so you're not left on your own after launch. What type of project are you thinking about? I can give you a much tighter number.`,
+        reply: `${hey}Fair to dig deeper. Business websites run $500 to $1,500. A Shopify or WooCommerce store is typically $800 to $2,500 depending on product count and custom features. Custom web apps start at $1,200 and go up from there. Every package has 3 months of free maintenance after launch built in. What type of project are you thinking? I can give you a tighter number.`,
         nextCtx: next,
       };
     }
     return {
-      reply: `Good question — and I'll give you a straight answer, no fluff. Our packages start at $500 for a clean 4-5 page business site, $800 for an e-commerce store, and $1,200+ for custom builds. We're not the cheapest option out there, but our clients see real ROI — Furtraits went from zero to consistent daily sales within weeks of launch. What kind of project do you have in mind? I can give you a ballpark right now.`,
+      reply: `${hey}Straight answer. Packages start at $500 for a clean business site, $800 for e-commerce, and $1,200 and up for custom builds. Not the cheapest out there, but clients see real results. Furtraits went from zero to consistent daily sales within weeks of launch. What kind of project are you thinking?`,
       nextCtx: next,
     };
   }
 
-  // ── Shopify ──
+  // ── Shopify / e-commerce ──
   if (/shopify|woocommerce|ecommerce|e-commerce|online store|sell online|product|inventory/.test(t)) {
     next.askedShopify = true;
     return {
-      reply: `${hey}Shopify is honestly one of our strongest areas. We've built stores for brands like Chilly Moose (they partner with the Calgary Flames) and Furtraits. The thing most agencies miss is conversion optimization — a beautiful store that doesn't sell is just expensive art. We focus hard on product page psychology, checkout flow, and mobile experience because that's where most stores leak money. Are you starting from scratch or migrating from somewhere else?`,
+      reply: `${hey}Shopify is one of our strongest areas. We've built stores for brands like Chilly Moose (Calgary Flames partnership) and Furtraits. The thing most agencies miss is conversion. A beautiful store that doesn't sell is just expensive art. We focus on product page structure, checkout flow, and mobile experience because that's where most stores bleed money. Starting from scratch or moving from somewhere else?`,
       nextCtx: next,
     };
   }
 
   // ── Timeline ──
-  if (/how long|timeline|deadline|when|fast|quick|rush|turnaround|days|weeks|time/.test(t)) {
+  if (/how long|timeline|deadline|when (can|will|do)|fast|quick|rush|turnaround|\bdays\b|\bweeks\b/.test(t)) {
     next.askedTimeline = true;
     return {
-      reply: `${hey}Real talk — most agencies quote 6-8 weeks and deliver in 3 months. We're different. A standard business website is typically 7-14 days. A Shopify store is 10-20 days. Custom web apps depend on complexity but we scope it precisely upfront so there are no surprises. We've had clients go from first call to live site in under 10 days. Do you have a specific deadline you're working toward?`,
+      reply: `${hey}Most agencies quote 6 to 8 weeks and deliver in 3 months. We're different. A standard business website takes 7 to 14 days. A Shopify store is 10 to 20 days. Custom apps depend on complexity but we scope it precisely upfront so there are no surprises. Some clients have gone from first call to live in under 10 days. Do you have a specific deadline you're working toward?`,
       nextCtx: next,
     };
   }
 
   // ── SEO ──
-  if (/seo|google|rank|search|traffic|keyword|visibility|organic|found online/.test(t)) {
+  if (/seo|google|rank|search engine|traffic|keyword|visibility|organic|found online/.test(t)) {
     next.askedSEO = true;
     return {
-      reply: `${hey}SEO is one of those things everyone talks about but few do properly. Here's the honest truth — we build every site with solid SEO foundations (fast load times, structured data, proper meta tags, semantic HTML) but SEO is a long game. You won't rank on page one overnight unless you're targeting very local or niche keywords. What we do exceptionally well is local SEO for Canadian businesses — if you're in a specific city, we can own that. What's your market?`,
+      reply: `${hey}Every site we build has solid SEO foundations baked in: fast load times, structured data, proper meta tags, semantic HTML. Real talk though, SEO is a long game. You won't rank on page one overnight unless you're going after very local or niche terms. Where we do really well is local SEO for Canadian businesses. What market are you targeting?`,
       nextCtx: next,
     };
   }
 
   // ── Maintenance ──
-  if (/maintain|maintenance|support|update|bug|fix|after launch|ongoing/.test(t)) {
+  if (/maintain|maintenance|support|update|bug|fix|after launch|ongoing|breaks|breaking/.test(t)) {
     next.askedMaintenance = true;
     return {
-      reply: `${hey}Every project we ship includes 3 months of free maintenance — security updates, content changes, bug fixes, the works. For larger projects it can be up to 6 months. After that, we offer ongoing retainer plans. Honestly though, we build things properly the first time so maintenance needs are minimal. What's your concern — are you worried about something breaking after launch, or more about ongoing content updates?`,
+      reply: `${hey}Every project ships with 3 months of free maintenance included: security updates, content changes, bug fixes. Larger projects get up to 6 months. After that there are retainer options if you want ongoing coverage. We build things properly the first time so maintenance needs tend to be minimal. Are you worried about something specific after launch?`,
       nextCtx: next,
     };
   }
 
-  // ── Portfolio / work ──
-  if (/portfolio|work|example|past|previous|built|project|client/.test(t)) {
+  // ── Portfolio / examples (specific patterns only, NOT standalone "work") ──
+  if (/portfolio|your (past |previous |recent )?(work|projects?|sites?|clients?)|show me (what|some|examples)|examples of|what (have you|did you) (built|made|created|done)|past (clients?|projects?)|previous (clients?|projects?)|clients? (you.ve|you have)/.test(t)) {
     return {
-      reply: `${hey}You can see everything at orcaenterprises.ca/work. Some highlights — Rentals Kamloops (a full property search platform), Chilly Moose (a Shopify store with Calgary Flames partnership branding), Furtraits (custom pet portrait store with killer conversion rates), and Hodder Construction's employee management portal. Each one had real business goals, not just "make it look nice." Which industry are you in? I can point you to the most relevant example.`,
+      reply: `${hey}Check out orcaenterprises.ca/work for the full portfolio. Some highlights: Rentals Kamloops (a full property search platform), Chilly Moose (Shopify store with Calgary Flames partnership branding), Furtraits (custom pet portrait store with strong conversion rates), and Hodder Construction's employee management portal. What industry are you in? I can point you to the most relevant one.`,
       nextCtx: next,
     };
   }
 
-  // ── WordPress ──
+  // ── Platform choice ──
   if (/wordpress|wp|elementor|wix|squarespace|webflow/.test(t)) {
     return {
-      reply: `${hey}We work across all major platforms. WordPress for content-heavy sites and blogs, Shopify for serious e-commerce, custom Next.js for anything that needs real performance or complex functionality. We don't push you toward a platform because we prefer it — we pick the right tool for your specific situation. What does your site need to actually do? That determines the platform.`,
+      reply: `${hey}We work across all the main platforms. WordPress for content-heavy sites and blogs, Shopify for serious e-commerce, custom Next.js for anything needing real performance or complex functionality. We don't push you toward a platform because we happen to prefer it. What does your site actually need to do? That's what determines the right tool.`,
       nextCtx: next,
     };
   }
@@ -157,39 +189,39 @@ function respond(text: string, ctx: Ctx): { reply: string; nextCtx: Ctx } {
   // ── Mobile ──
   if (/mobile|phone|responsive|tablet|ios|android/.test(t)) {
     return {
-      reply: `${hey}Mobile-first is non-negotiable for us — it's not a feature, it's the baseline. Over 60% of web traffic is mobile. We design and test on real devices, not just browser emulators. Touch targets, load speed on LTE, and font sizing on small screens are things most templates get wrong. Every site we ship is pixel-perfect on mobile before we sign off.`,
+      reply: `${hey}Mobile-first is the baseline for us, not an add-on. Over 60% of web traffic is mobile now. We design and test on real devices, not just browser emulators. Touch targets, load speed on LTE, font sizing on small screens: these are things most templates get wrong. Every site is solid on mobile before we sign off.`,
       nextCtx: next,
     };
   }
 
-  // ── Advice / general web ──
-  if (/advice|tip|help|should i|recommend|better|best|what do you think|opinion/.test(t)) {
+  // ── Advice ──
+  if (/advice|tip|should i|what do you recommend|what.s better|what.s best|what do you think|your opinion/.test(t)) {
     return {
-      reply: `${hey}Straight up advice — the biggest mistake small businesses make is treating their website like a brochure instead of a sales tool. Your site should be doing work 24/7. Think clear calls to action, fast load times, trust signals like reviews and real photos, and a dead-simple way to contact you. What's your current situation — do you have a site already or starting fresh?`,
+      reply: `${hey}Biggest mistake small businesses make: treating their website like a brochure instead of a sales tool. Your site should be working 24/7. Clear calls to action, fast load times, trust signals like real reviews and photos, and a simple way to contact you. Do you have a site already or starting from scratch?`,
       nextCtx: next,
     };
   }
 
-  // ── Contact / human ──
-  if (/contact|email|call|phone|speak|human|person|team|adhvait|owner/.test(t)) {
+  // ── Contact / reach a human ──
+  if (/contact|email|call|phone|speak to|talk to|reach (out|a|the)|human|real person|adhvait|the owner|the team/.test(t)) {
     return {
-      reply: `${hey}Absolutely — the best way to get a real conversation going is through our contact page at orcaenterprises.ca/contact. You'll usually hear back within a few hours, same day at most. If you want, tell me a bit about your project here first and I can make sure the conversation starts in the right place when we connect.`,
+      reply: `${hey}Best way to get a real conversation going is orcaenterprises.ca/contact. Usually hear back within a few hours, same day at most. If you want, tell me a bit about your project here first and I can make sure the conversation starts in the right place.`,
       nextCtx: next,
     };
   }
 
   // ── Thanks ──
-  if (/thank|thanks|appreciate|helpful|great|awesome|perfect|love it/.test(t)) {
+  if (/thank|thanks|appreciate|that('s| was) helpful|great|awesome|perfect/.test(t)) {
     return {
-      reply: `${hey}Of course! That's what I'm here for. Any other questions — don't hold back. If you're ready to actually move forward on something, hit the "Start a Project" button or head to the contact page. We turn projects around fast.`,
+      reply: `${hey}Of course, happy to help. Any other questions, just ask. If you're ready to move forward on something, head to the contact page and we'll get things going quickly.`,
       nextCtx: next,
     };
   }
 
-  // ── Negative / frustrated ──
+  // ── Negative ──
   if (/bad|terrible|useless|hate|stupid|annoying|waste/.test(t)) {
     return {
-      reply: "Fair — I'm a simple assistant and I have limits. For anything specific or complex, honestly just message the team directly at orcaenterprises.ca/contact. Adhvait responds personally and you'll get a much better conversation.",
+      reply: "Fair enough. I'm a simple assistant and I have limits. For anything specific, just message the team directly at orcaenterprises.ca/contact. Adhvait responds personally and you'll get a much better conversation.",
       nextCtx: next,
     };
   }
@@ -199,9 +231,8 @@ function respond(text: string, ctx: Ctx): { reply: string; nextCtx: Ctx } {
     `${hey}What's the goal here? Are you looking to get a new site built, improve an existing one, or just exploring options? I can give you much more useful info once I know what you're working with.`,
     `${hey}Can you tell me a bit more about your business and what you're trying to accomplish online? The more specific you are, the better I can point you in the right direction.`,
     `${hey}What industry is your business in? That changes a lot about what I'd recommend in terms of platform, features, and budget.`,
-    `${hey}Honestly the best next step is a quick conversation with the team. Drop a message at orcaenterprises.ca/contact — Adhvait responds personally and you'll get a real, specific answer fast.`,
+    `${hey}Honestly the best next step is a quick conversation with the team. Drop a message at orcaenterprises.ca/contact and Adhvait will give you a real answer fast.`,
   ];
-  // Pick any index that isn't the one we just used
   const available = fallbacks.map((_, i) => i).filter(i => i !== ctx.lastFallback);
   const pick = available[next.messageCount % available.length];
   next.lastFallback = pick;

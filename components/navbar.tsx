@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
@@ -21,6 +22,10 @@ export default function Navbar() {
   const [isMobileMenuOpen, setMobileMenu] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  // "atTop" = we're over the ocean hero — use white text. On any other page, always use solid bg colors.
+  const atTop = !isScrolled && isHome;
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
@@ -33,13 +38,11 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [isMobileMenuOpen]);
 
-  // When not scrolled we're over the ocean — always white text
-  // When scrolled we have a solid bg — use theme-appropriate colors
-  const logoColor    = isScrolled ? (isDark ? "#00F0FF" : "#006B7D") : "#ffffff";
-  const subColor     = isScrolled ? (isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.4)") : "rgba(255,255,255,0.82)";
-  const linkColor    = isScrolled ? (isDark ? "rgba(255,255,255,0.75)" : "rgba(30,30,30,0.85)") : "rgba(255,255,255,0.85)";
-  const linkHover    = isScrolled ? (isDark ? "#ffffff" : "#006B7D") : "#ffffff";
-  const hamburgerBar = isScrolled ? (isDark ? "rgba(255,255,255,0.85)" : "rgba(20,20,20,0.9)") : "rgba(255,255,255,0.9)";
+  const logoColor    = atTop ? "#ffffff" : (isDark ? "#00F0FF" : "#006B7D");
+  const subColor     = atTop ? "rgba(255,255,255,0.82)" : (isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.4)");
+  const linkColor    = atTop ? "rgba(255,255,255,0.85)" : (isDark ? "rgba(255,255,255,0.75)" : "rgba(30,30,30,0.85)");
+  const linkHover    = atTop ? "#ffffff" : (isDark ? "#ffffff" : "#006B7D");
+  const hamburgerBar = atTop ? "rgba(255,255,255,0.9)" : (isDark ? "rgba(255,255,255,0.85)" : "rgba(20,20,20,0.9)");
 
   return (
     <>
@@ -48,7 +51,7 @@ export default function Navbar() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          isScrolled
+          !atTop
             ? isDark
               ? "bg-[#080e1c]/92 backdrop-blur-2xl border-b border-white/8 shadow-[0_1px_20px_rgba(0,0,0,0.4)]"
               : "bg-white/94 backdrop-blur-2xl border-b border-black/8 shadow-[0_1px_12px_rgba(0,0,0,0.08)]"
@@ -66,7 +69,7 @@ export default function Navbar() {
           className="absolute top-0 left-0 right-0 transition-colors duration-400"
           style={{
             height: "env(safe-area-inset-top)",
-            background: isScrolled
+            background: !atTop
               ? isDark ? "rgba(8,14,28,0.92)" : "rgba(255,255,255,0.94)"
               : "rgba(0,0,0,0.15)",
           }}
@@ -115,7 +118,7 @@ export default function Navbar() {
                       <span className="relative z-10">{link.name}</span>
                       <span
                         className="absolute -bottom-1 left-0 w-0 h-[2px] group-hover/link:w-full transition-all duration-400 ease-out rounded-full"
-                        style={{ background: isScrolled ? (isDark ? "#00F0FF" : "#006B7D") : "rgba(255,255,255,0.8)" }}
+                        style={{ background: atTop ? "rgba(255,255,255,0.8)" : (isDark ? "#00F0FF" : "#006B7D") }}
                       />
                     </Link>
                   </motion.div>
