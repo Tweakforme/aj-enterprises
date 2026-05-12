@@ -164,7 +164,7 @@ export default function Services() {
           
           <p className="text-base sm:text-lg text-ocean-600 dark:text-white/60 leading-relaxed">
             From simple business sites to complex e-commerce stores — professional web development 
-            with no hidden fees. Every package includes 1 full year of free maintenance.
+            with no hidden fees. Every package includes 3 months of free maintenance, up to 6 months on certain projects.
           </p>
         </motion.div>
 
