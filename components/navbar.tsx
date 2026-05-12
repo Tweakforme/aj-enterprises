@@ -41,7 +41,7 @@ export default function Navbar() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-white/88 dark:bg-[#080e1c]/90 backdrop-blur-2xl border-b border-black/8 dark:border-white/8 shadow-sm"
+            ? "bg-white/90 dark:bg-[#080e1c]/92 backdrop-blur-2xl border-b border-black/8 dark:border-white/8 shadow-sm"
             : "bg-transparent"
         }`}
         style={{
@@ -50,6 +50,16 @@ export default function Navbar() {
           paddingTop: "env(safe-area-inset-top)",
         }}
       >
+        {/* Always-filled safe-area strip — covers the notch/status bar zone */}
+        <div
+          aria-hidden
+          className={`absolute top-0 left-0 right-0 transition-colors duration-500 ${
+            isScrolled
+              ? "bg-white/90 dark:bg-[#080e1c]/92"
+              : "bg-white/10 dark:bg-black/30"
+          }`}
+          style={{ height: "env(safe-area-inset-top)" }}
+        />
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-[64px] sm:h-[72px] lg:h-[88px]">
 
