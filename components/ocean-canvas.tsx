@@ -294,49 +294,6 @@ export default function OceanCanvas({ isDark }: { isDark: boolean }) {
         });
       }
 
-      /* ── 4. CELESTIAL ── */
-      const celX = W * 0.74, celY = dark ? H * 0.11 : H * 0.13;
-      if (!dark) {
-        // Sun outer glow
-        const sg = ctx.createRadialGradient(celX, celY, 0, celX, celY, 130);
-        sg.addColorStop(0, "rgba(255,230,60,0.3)");
-        sg.addColorStop(1, "rgba(255,180,0,0)");
-        ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(celX, celY, 130, 0, Math.PI * 2); ctx.fill();
-        // Rays
-        ctx.save(); ctx.translate(celX, celY); ctx.rotate(s.tick * 0.0025);
-        for (let i = 0; i < 14; i++) {
-          const a = (i / 14) * Math.PI * 2;
-          ctx.beginPath(); ctx.moveTo(Math.cos(a)*40, Math.sin(a)*40); ctx.lineTo(Math.cos(a)*62, Math.sin(a)*62);
-          ctx.strokeStyle = "rgba(255,220,50,0.35)"; ctx.lineWidth = 2.5; ctx.stroke();
-        }
-        ctx.restore();
-        // Sun disk
-        const sd = ctx.createRadialGradient(celX-7, celY-7, 2, celX, celY, 34);
-        sd.addColorStop(0, "#fffde0"); sd.addColorStop(0.5, "#ffe040"); sd.addColorStop(1, "#ffb700");
-        ctx.beginPath(); ctx.arc(celX, celY, 34, 0, Math.PI * 2);
-        ctx.fillStyle = sd; ctx.fill();
-        // Reflection
-        const refG = ctx.createLinearGradient(celX, horizonY, celX, horizonY + 90);
-        refG.addColorStop(0, "rgba(255,230,50,0.22)"); refG.addColorStop(1, "rgba(255,230,50,0)");
-        ctx.fillStyle = refG; ctx.beginPath(); ctx.ellipse(celX, horizonY+35, 55, 55, 0, 0, Math.PI*2); ctx.fill();
-      } else {
-        // Moon glow
-        const mg = ctx.createRadialGradient(celX, celY, 0, celX, celY, 95);
-        mg.addColorStop(0, "rgba(190,215,255,0.18)"); mg.addColorStop(1, "rgba(140,170,255,0)");
-        ctx.fillStyle = mg; ctx.beginPath(); ctx.arc(celX, celY, 95, 0, Math.PI * 2); ctx.fill();
-        // Moon disk
-        const md = ctx.createRadialGradient(celX-5, celY-5, 2, celX, celY, 27);
-        md.addColorStop(0, "#eef2ff"); md.addColorStop(0.7, "#c8d8f8"); md.addColorStop(1, "#a0b8e8");
-        ctx.beginPath(); ctx.arc(celX, celY, 27, 0, Math.PI * 2); ctx.fillStyle = md; ctx.fill();
-        // Crescent mask
-        ctx.beginPath(); ctx.arc(celX+11, celY-4, 22, 0, Math.PI * 2);
-        ctx.fillStyle = "#040d28"; ctx.fill();
-        // Moon reflection
-        const mrG = ctx.createLinearGradient(celX, horizonY, celX, horizonY+110);
-        mrG.addColorStop(0, "rgba(170,200,255,0.16)"); mrG.addColorStop(1, "rgba(170,200,255,0)");
-        ctx.fillStyle = mrG; ctx.beginPath(); ctx.ellipse(celX, horizonY+45, 28, 65, 0, 0, Math.PI*2); ctx.fill();
-      }
-
       /* ── 5. OCEAN BASE ── */
       const og = ctx.createLinearGradient(0, horizonY, 0, H);
       if (dark) {
