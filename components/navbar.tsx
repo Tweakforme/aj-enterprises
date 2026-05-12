@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useTheme } from "@/app/context/ThemeContext";
+import ThemeToggle from "@/components/theme-toggle";
 
 const navLinks = [
   { name: "Work", href: "/work" },
@@ -18,7 +19,7 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,40 +98,9 @@ export default function Navbar() {
             </div>
 
             {/* Right Side: Theme Toggle + CTA */}
-            <div className="hidden lg:flex items-center gap-4 relative z-50">
-              {/* Theme Toggle Button */}
-              <motion.button
-                onClick={toggleTheme}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative w-12 h-12 rounded-full bg-gray-200 dark:bg-dark-300 border border-gray-300 dark:border-primary/20 flex items-center justify-center group overflow-hidden"
-                aria-label="Toggle theme"
-              >
-                <AnimatePresence mode="wait">
-  {theme === "light" ? (
-    <motion.div
-      key="sun"
-      initial={{ rotate: -90, opacity: 0 }}
-      animate={{ rotate: 0, opacity: 1 }}
-      exit={{ rotate: 90, opacity: 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      <Sun className="w-5 h-5 text-accent-light dark:text-accent" />
-    </motion.div>
-  ) : (
-    <motion.div
-      key="moon"
-      initial={{ rotate: 90, opacity: 0 }}
-      animate={{ rotate: 0, opacity: 1 }}
-      exit={{ rotate: -90, opacity: 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      <Moon className="w-5 h-5 text-primary-light dark:text-primary" />
-    </motion.div>
-  )}
-</AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.button>
+            <div className="hidden lg:flex items-center gap-2 relative z-50">
+              {/* Theme Toggle */}
+              <ThemeToggle size="md" />
 
               {/* CTA Button */}
               <motion.div
@@ -156,39 +126,9 @@ export default function Navbar() {
             </div>
 
             {/* Mobile: Theme Toggle + Menu Button */}
-            <div className="lg:hidden flex items-center gap-2 relative z-50">
-              {/* Mobile Theme Toggle - 44x44px for better touch */}
-              <motion.button
-                onClick={toggleTheme}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-11 h-11 rounded-full bg-gray-200 dark:bg-dark-300 border border-gray-300 dark:border-primary/20 flex items-center justify-center"
-                aria-label="Toggle theme"
-              >
-               <AnimatePresence mode="wait">
-  {theme === "light" ? (
-    <motion.div
-      key="sun"
-      initial={{ rotate: -90, opacity: 0 }}
-      animate={{ rotate: 0, opacity: 1 }}
-      exit={{ rotate: 90, opacity: 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      <Sun className="w-5 h-5 text-accent-light dark:text-accent" />
-    </motion.div>
-  ) : (
-    <motion.div
-      key="moon"
-      initial={{ rotate: 90, opacity: 0 }}
-      animate={{ rotate: 0, opacity: 1 }}
-      exit={{ rotate: -90, opacity: 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      <Moon className="w-5 h-5 text-primary-light dark:text-primary" />
-    </motion.div>
-  )}
-</AnimatePresence>
-              </motion.button>
+            <div className="lg:hidden flex items-center gap-1 relative z-50">
+              {/* Mobile Theme Toggle */}
+              <ThemeToggle size="sm" />
 
               {/* Mobile Menu Button - 44x44px for better touch */}
               <button
