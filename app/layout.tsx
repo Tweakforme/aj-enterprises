@@ -4,6 +4,7 @@ import "./globals.css";
 import CustomCursor from "@/components/custom-cursor";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import Chatbot from "@/components/chatbot";
 import { Providers } from "./providers";
 import { OrganizationSchema, LocalBusinessSchema, WebsiteSchema, ReviewSchema, ServiceSchema } from "@/components/structured-data";
 
@@ -96,6 +97,7 @@ export default function RootLayout({
         <Providers>
           <CustomCursor />
           <Navbar />
+          <Chatbot />
           <main className="relative overflow-hidden">
             {children}
           </main>
