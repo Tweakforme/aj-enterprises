@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
@@ -380,7 +380,7 @@ export default function WorkPage() {
             
             <p className="text-base sm:text-lg text-ocean-600 dark:text-white/60 leading-relaxed transition-colors duration-300">
               We combine technical excellence with business acumen to deliver websites
-              that don't just look good — they drive real results.
+              that don't just look good. They drive real results.
             </p>
           </motion.div>
 

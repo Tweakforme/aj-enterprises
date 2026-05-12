@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
@@ -25,7 +25,7 @@ const services = [
   {
     number: "02",
     title: "Commerce Stores",
-    description: "Complete online stores on Shopify, WooCommerce, or custom platforms. Product pages, shopping cart, payment processing — everything to start selling.",
+    description: "Complete online stores on Shopify, WooCommerce, or custom platforms. Product pages, shopping cart, payment processing. Everything you need to start selling.",
     features: [
       "Platform Setup (Shopify/WordPress)",
       "Product Page Design",
@@ -143,7 +143,7 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-16 sm:py-20 lg:py-24 xl:py-28 overflow-hidden bg-light-100 dark:bg-dark-100 transition-colors duration-300">
+    <section id="services" className="relative py-16 sm:py-20 lg:py-24 xl:py-28 overflow-hidden bg-white/70 dark:bg-black/60 backdrop-blur-md transition-colors duration-300">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-light/3 dark:via-primary/2 to-transparent" />
       <div className="pointer-events-none absolute top-1/4 left-1/4 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary-light/5 dark:bg-primary/5 blur-3xl" />
       
@@ -167,7 +167,7 @@ export default function Services() {
           </h2>
           
           <p className="text-base sm:text-lg text-ocean-600 dark:text-white/60 leading-relaxed">
-            From simple business sites to complex e-commerce stores — professional web development 
+            From simple business sites to complex e-commerce stores: professional web development 
             with no hidden fees. Every package includes 3 months of free maintenance, up to 6 months on certain projects.
           </p>
         </motion.div>
@@ -188,7 +188,7 @@ export default function Services() {
             We Work With All Major Platforms
           </h3>
           <p className="text-ocean-600 dark:text-white/60 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
-            Whether you prefer Shopify, WordPress, Wix, Squarespace, or need a fully custom solution — we've got you covered.
+            Whether you prefer Shopify, WordPress, Wix, Squarespace, or need a fully custom solution, we've got you covered.
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {platforms.map((platform, i) => (

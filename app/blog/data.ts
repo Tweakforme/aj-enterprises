@@ -1,4 +1,4 @@
-export interface BlogPost {
+﻿export interface BlogPost {
   slug: string;
   title: string;
   description: string;
@@ -308,7 +308,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'cta',
-        text: 'Talk to a Web Developer Today — Free Consultation',
+        text: 'Talk to a Web Developer Today, Free Consultation',
       },
     ],
     faq: [

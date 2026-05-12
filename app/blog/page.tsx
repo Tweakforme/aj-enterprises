@@ -1,10 +1,10 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { blogPosts } from './data';
 import { generateMetadata as genMeta } from '@/app/lib/metadata';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = genMeta({
-  title: 'Blog — Web Development & Shopify Tips for Canadian Businesses',
+  title: 'Blog: Web Development & Shopify Tips for Canadian Businesses',
   description:
     'Practical guides on Shopify development, web design, and growing your business online. Written by the team at ORCA Enterprises Inc.',
   path: '/blog',

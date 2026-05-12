@@ -29,7 +29,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden bg-light-100 dark:bg-dark-100 transition-colors duration-300">
+    <section id="contact" className="section-padding relative overflow-hidden bg-white/75 dark:bg-black/65 backdrop-blur-md transition-colors duration-300">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-light/5 dark:via-primary/5 to-transparent" />
       

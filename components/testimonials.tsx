@@ -58,7 +58,7 @@ export default function Testimonials() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 xl:py-28 overflow-hidden bg-light-200 dark:bg-dark-200 transition-colors duration-300">
+    <section className="relative py-16 sm:py-20 lg:py-24 xl:py-28 overflow-hidden bg-white/75 dark:bg-black/65 backdrop-blur-md transition-colors duration-300">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-light/3 dark:via-primary/2 to-transparent" />
       <div className="pointer-events-none absolute bottom-0 right-0 w-[30rem] h-[30rem] bg-accent-light/5 dark:bg-accent/5 blur-3xl" />
 

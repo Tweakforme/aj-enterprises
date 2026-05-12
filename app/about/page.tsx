@@ -152,7 +152,7 @@ export default function AboutPage() {
                 <div className="relative h-full w-full overflow-hidden bg-light-200 dark:bg-dark-200 ring-1 ring-ocean-200 dark:ring-white/10 transition-colors duration-300">
                   <Image
                     src="/aj-photo.jpeg"
-                    alt="AJ — Founder"
+                    alt="AJ, Founder"
                     fill
                     className="object-cover object-center"
                     priority
@@ -249,7 +249,7 @@ export default function AboutPage() {
               {
                 icon: Shield,
                 title: "Enterprise Reliability",
-                desc: "99.9% uptime, auto backups, and secure infrastructure — enterprise-grade peace of mind.",
+                desc: "99.9% uptime, auto backups, and secure infrastructure for enterprise-grade peace of mind.",
               },
               {
                 icon: TrendingUp,
@@ -327,8 +327,8 @@ export default function AboutPage() {
               {/* Description */}
               <p className="text-base sm:text-lg text-ocean-600 dark:text-gray-400 mb-8 sm:mb-10 leading-relaxed transition-colors duration-300">
                 Professional web development starting at{" "}
-                <span className="text-ocean-900 dark:text-white font-bold text-lg sm:text-xl transition-colors duration-300">$500</span> — including
-                one full year of maintenance, support, and optimization.
+                <span className="text-ocean-900 dark:text-white font-bold text-lg sm:text-xl transition-colors duration-300">$500</span> - including
+                3 months of maintenance, support, and optimization.
               </p>
 
               {/* CTA Buttons */}

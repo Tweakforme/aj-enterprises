@@ -132,6 +132,7 @@
   }
 }
 
+
 /* Noise texture overlay */
 body::before {
   content: '';
@@ -159,34 +160,26 @@ body::before {
   pointer-events: none;
   z-index: 10000;
   transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
 }
 
-/* Inner dot - sharp and visible */
+/* Inner dot */
 .cursor-dot {
   width: 8px;
   height: 8px;
-  background: #006B7D;
+  background: #00F0FF;
   border-radius: 50%;
-  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,240,255,0.8);
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
 }
 
-.dark .cursor-dot {
-  background: #fff;
-}
-
-/* Outer circle - smooth following */
+/* Outer circle */
 .cursor-circle {
   width: 40px;
   height: 40px;
-  border: 2px solid #006B7D;
+  border: 2px solid rgba(0,240,255,0.7);
   border-radius: 50%;
   transition: width 0.4s ease, height 0.4s ease, border-color 0.3s ease, opacity 0.3s ease;
-  opacity: 0.5;
-}
-
-.dark .cursor-circle {
-  border-color: #fff;
+  opacity: 0.6;
 }
 
 /* ============================================ */
@@ -195,17 +188,36 @@ body::before {
 .cursor-dot.hover {
   width: 0;
   height: 0;
+  opacity: 0;
 }
 
 .cursor-circle.hover {
   width: 60px;
   height: 60px;
-  border-color: #006B7D;
-  opacity: 0.8;
+  border-color: #00F0FF;
+  opacity: 0.9;
+  box-shadow: 0 0 20px rgba(0,240,255,0.4);
 }
 
-.dark .cursor-circle.hover {
-  border-color: #00F0FF;
+/* ============================================ */
+/* BUBBLE PARTICLES                             */
+/* ============================================ */
+@keyframes bubble-rise {
+  0%   { transform: translateY(0) translateX(0) scale(1);    opacity: 0; }
+  8%   { opacity: 0.75; }
+  85%  { opacity: 0.3; }
+  100% { transform: translateY(-110vh) translateX(18px) scale(1.3); opacity: 0; }
+}
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(0,240,255,0.9), rgba(0,107,125,0.3));
+  animation: bubble-rise linear infinite;
+  pointer-events: none;
+}
+.dark .bubble {
+  background: radial-gradient(circle at 35% 35%, rgba(0,240,255,0.95), rgba(0,200,220,0.2));
+  box-shadow: 0 0 6px rgba(0,240,255,0.5);
 }
 
 /* ============================================ */

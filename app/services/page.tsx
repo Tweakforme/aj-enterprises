@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
@@ -57,7 +57,7 @@ const coreServices = [
     tier: "Growth",
     name: "Commerce Stores",
     tagline: "Start selling. Start scaling.",
-    description: "Complete online stores on Shopify, WooCommerce, or custom platforms. Product pages, shopping cart, payment processing — everything to start selling.",
+    description: "Complete online stores on Shopify, WooCommerce, or custom platforms. Product pages, shopping cart, payment processing. Everything you need to start selling.",
     startingPrice: "$800",
     priceRange: "$800 - $2,500",
     timeline: "10-20 days",
@@ -419,7 +419,7 @@ export default function ServicesPage() {
             </h1>
 
             <p className="text-lg sm:text-xl text-ocean-600 dark:text-white/60 leading-relaxed mb-8 max-w-3xl mx-auto">
-              From simple websites to complex web applications — professional development with
+              From simple websites to complex web applications, with professional development with
               transparent pricing, no hidden fees, and <span className="text-ocean-900 dark:text-white font-bold">up to 6 months of free maintenance</span> included.
             </p>
 

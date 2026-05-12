@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, type MouseEvent } from "react";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -90,7 +90,7 @@ function ProjectCard({
   const tiltRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
     const el = tiltRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -222,7 +222,7 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="relative py-16 sm:py-20 lg:py-24 xl:py-28 overflow-hidden bg-light-100 dark:bg-dark-100 transition-colors duration-300"
+      className="relative py-16 sm:py-20 lg:py-24 xl:py-28 overflow-hidden bg-white/70 dark:bg-black/60 backdrop-blur-md transition-colors duration-300"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-light/3 dark:via-primary/2 to-transparent" />
       <div className="pointer-events-none absolute top-1/4 right-1/4 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary-light/5 dark:bg-primary/5 blur-3xl" />
