@@ -86,7 +86,11 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       )}
 
       <div className="absolute inset-0 bg-gradient-to-br from-primary-light/5 dark:from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
+      {/* Sheen sweep */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/8 to-transparent skew-x-[-12deg]" />
+      </div>
+
       <div className="relative p-8 lg:p-10 flex flex-col h-full">
         <div className="font-display text-7xl font-bold text-ocean-200 dark:text-white/5 mb-6 group-hover:text-primary-light/20 dark:group-hover:text-primary/10 transition-colors duration-500">
           {service.number}

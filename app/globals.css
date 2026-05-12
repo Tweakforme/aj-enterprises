@@ -207,3 +207,41 @@ body::before {
 .dark .cursor-circle.hover {
   border-color: #00F0FF;
 }
+
+/* ============================================ */
+/* FLOATING ORB ANIMATIONS                      */
+/* ============================================ */
+@keyframes orb-float-1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  25%  { transform: translate(40px, -60px) scale(1.06); }
+  50%  { transform: translate(-30px, 40px) scale(0.96); }
+  75%  { transform: translate(60px, 25px) scale(1.04); }
+}
+@keyframes orb-float-2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(-70px, 50px) scale(1.09); }
+  66%  { transform: translate(50px, -40px) scale(0.94); }
+}
+@keyframes orb-float-3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50%  { transform: translate(-40px, -70px) scale(1.11); }
+}
+.orb-1 { animation: orb-float-1 14s ease-in-out infinite; }
+.orb-2 { animation: orb-float-2 17s ease-in-out infinite; }
+.orb-3 { animation: orb-float-3 11s ease-in-out infinite; }
+
+/* ============================================ */
+/* CARD SHEEN SWEEP                             */
+/* ============================================ */
+.sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.group:hover .sheen::after {
+  transform: translateX(100%);
+}

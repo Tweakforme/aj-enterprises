@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -87,19 +87,36 @@ function ProjectCard({
   index: number;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const tiltRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = tiltRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    el.style.transform = `perspective(1200px) rotateX(${(y - 0.5) * -10}deg) rotateY(${(x - 0.5) * 10}deg) scale(1.025)`;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (!tiltRef.current) return;
+    tiltRef.current.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)";
+  }, []);
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: [0.33, 1, 0.68, 1],
-      }}
-      className="group relative bg-white dark:bg-dark-200/50 border border-ocean-300 dark:border-white/10 hover:border-primary-light dark:hover:border-primary/40 transition-all duration-500 overflow-hidden flex flex-col h-full shadow-lg dark:shadow-none"
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.33, 1, 0.68, 1] }}
+    >
+    <div
+      ref={tiltRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ transition: "transform 0.18s ease-out", transformStyle: "preserve-3d" }}
+      className="group relative bg-white dark:bg-dark-200/50 border border-ocean-300 dark:border-white/10 hover:border-primary-light dark:hover:border-primary/40 transition-colors duration-500 overflow-hidden flex flex-col h-full shadow-lg dark:shadow-none"
     >
       {/* Image Container with Browser Frame */}
       <div className="relative w-full bg-light-300 dark:bg-dark-300 overflow-hidden">
@@ -189,6 +206,11 @@ function ProjectCard({
 
       {/* Hover glow */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-primary-light/5 dark:from-primary/5 via-transparent to-transparent pointer-events-none transition-opacity duration-500" />
+      {/* Sheen sweep */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/8 to-transparent skew-x-[-12deg]" />
+      </div>
+    </div>
     </motion.div>
   );
 }
