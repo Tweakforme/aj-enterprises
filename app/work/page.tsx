@@ -49,6 +49,16 @@ const projects = [
     results: ["#1 Google ranking locally", "45% increase in leads", "modern design"],
   },
   {
+    title: "EV Cars Marketplace",
+    url: "cars.theevstore.ca",
+    fullUrl: "https://cars.theevstore.ca",
+    description: "Car listing platform for electric vehicles. Browse inventory, compare specs, and find your perfect EV with advanced search.",
+    category: "Marketplace",
+    tags: ["Next.js", "Database", "Search & Filter"],
+    image: "/cars.png",
+    results: ["Advanced filters", "Real-time updates", "Interactive comparison"],
+  },
+  {
     title: "Advanced Plumbing",
     url: "advancedplumbingkamloops.ca",
     fullUrl: "https://advancedplumbingkamloops.ca",
