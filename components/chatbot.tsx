@@ -19,6 +19,7 @@ interface Ctx {
   askedMaintenance: boolean;
   userName: string;
   messageCount: number;
+  lastFallback: number;
 }
 
 const DEFAULT_CTX: Ctx = {
@@ -29,17 +30,52 @@ const DEFAULT_CTX: Ctx = {
   askedMaintenance: false,
   userName: "",
   messageCount: 0,
+  lastFallback: -1,
 };
+
+// Words that can't be a person's name
+const NON_NAMES = new Set([
+  "just","not","here","there","going","looking","ready","happy","good","fine",
+  "trying","doing","also","only","new","old","really","very","pretty","quite",
+  "sure","okay","cool","great","well","right","back","still","maybe","actually",
+  "wondering","thinking","curious","browsing","exploring","checking","interested",
+]);
 
 /* ─── response engine ─── */
 function respond(text: string, ctx: Ctx): { reply: string; nextCtx: Ctx } {
   const t = text.toLowerCase().trim();
   const next = { ...ctx, messageCount: ctx.messageCount + 1 };
 
-  // Name detection
+  // Name detection — ignore common non-name words
   const nameMatch = t.match(/(?:i(?:'m| am)|my name(?:'s| is)|call me)\s+([a-z]+)/i);
-  if (nameMatch) next.userName = nameMatch[1].charAt(0).toUpperCase() + nameMatch[1].slice(1);
+  if (nameMatch && !NON_NAMES.has(nameMatch[1].toLowerCase())) {
+    next.userName = nameMatch[1].charAt(0).toUpperCase() + nameMatch[1].slice(1);
+  }
   const hey = next.userName ? `${next.userName}, ` : "";
+
+  // ── Just browsing / uncertain ──
+  if (/just (browsing|looking|exploring|checking)|idk|i don.?t know|not sure|no idea|just here|just curious|just checking/.test(t)) {
+    return {
+      reply: `No worries at all — totally fine to just look around. If anything catches your eye or you want to understand what something costs or how long it takes, I'm right here. No pressure.`,
+      nextCtx: next,
+    };
+  }
+
+  // ── Services overview ──
+  if (/what (do you|can you) (build|make|do|offer|create|develop)|what('s| is) (your )?service|what do you (specialize|focus)|capabilities|what (kinds?|types?) of/.test(t)) {
+    return {
+      reply: `${hey}We build three main types of things. First, business websites — clean, fast, conversion-focused sites for service companies and brands. Second, e-commerce stores — Shopify and WooCommerce stores that are actually built to sell, not just look good. Third, custom web apps — dashboards, booking systems, marketplaces, portals. We're based in Calgary but work with clients across Canada and the US. Which of those sounds closest to what you need?`,
+      nextCtx: next,
+    };
+  }
+
+  // ── Build intent ──
+  if (/(build|create|make|develop|need|want|get|launch|start).*(site|website|store|shop|app|web|online)|(site|website|store|shop|app|web|online).*(build|create|made|developed|built|launched|started)/.test(t)) {
+    return {
+      reply: `${hey}Good — that's exactly what we do. To point you in the right direction: are you thinking e-commerce (selling products), a service/business site, or something more custom like a portal or web app? That changes the approach and budget quite a bit.`,
+      nextCtx: next,
+    };
+  }
 
   // ── Greetings ──
   if (/^(hi|hey|hello|sup|yo|howdy|good morning|good afternoon|good evening)/.test(t)) {
@@ -158,23 +194,18 @@ function respond(text: string, ctx: Ctx): { reply: string; nextCtx: Ctx } {
     };
   }
 
-  // ── Follow-up / fallback — context-aware ──
-  if (ctx.messageCount > 2) {
-    const contextual = [
-      `${hey}I want to make sure I'm actually helpful here — can you tell me a bit more about your business and what you're trying to accomplish online? The more specific you are, the better I can point you in the right direction.`,
-      `${hey}Honestly the best way I can help is to connect you with the team. Drop a message at orcaenterprises.ca/contact — Adhvait will give you a real, specific answer faster than I can.`,
-      `${hey}Good question. Every situation is a bit different. What industry is your business in? That changes a lot about what I'd recommend.`,
-    ];
-    return {
-      reply: contextual[ctx.messageCount % contextual.length],
-      nextCtx: next,
-    };
-  }
-
-  return {
-    reply: `${hey}Tell me more — what's the goal here? Are you looking to get a new site built, improve an existing one, or just exploring options? I can give you way more useful info once I know what you're working with.`,
-    nextCtx: next,
-  };
+  // ── Fallback — never repeats the same message twice in a row ──
+  const fallbacks = [
+    `${hey}What's the goal here? Are you looking to get a new site built, improve an existing one, or just exploring options? I can give you much more useful info once I know what you're working with.`,
+    `${hey}Can you tell me a bit more about your business and what you're trying to accomplish online? The more specific you are, the better I can point you in the right direction.`,
+    `${hey}What industry is your business in? That changes a lot about what I'd recommend in terms of platform, features, and budget.`,
+    `${hey}Honestly the best next step is a quick conversation with the team. Drop a message at orcaenterprises.ca/contact — Adhvait responds personally and you'll get a real, specific answer fast.`,
+  ];
+  // Pick any index that isn't the one we just used
+  const available = fallbacks.map((_, i) => i).filter(i => i !== ctx.lastFallback);
+  const pick = available[next.messageCount % available.length];
+  next.lastFallback = pick;
+  return { reply: fallbacks[pick], nextCtx: next };
 }
 
 const QUICK = [

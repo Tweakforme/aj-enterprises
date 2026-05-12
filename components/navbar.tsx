@@ -36,7 +36,7 @@ export default function Navbar() {
   // When not scrolled we're over the ocean — always white text
   // When scrolled we have a solid bg — use theme-appropriate colors
   const logoColor    = isScrolled ? (isDark ? "#00F0FF" : "#006B7D") : "#ffffff";
-  const subColor     = isScrolled ? (isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.4)") : "rgba(255,255,255,0.55)";
+  const subColor     = isScrolled ? (isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.4)") : "rgba(255,255,255,0.82)";
   const linkColor    = isScrolled ? (isDark ? "rgba(255,255,255,0.75)" : "rgba(30,30,30,0.85)") : "rgba(255,255,255,0.85)";
   const linkHover    = isScrolled ? (isDark ? "#ffffff" : "#006B7D") : "#ffffff";
   const hamburgerBar = isScrolled ? (isDark ? "rgba(255,255,255,0.85)" : "rgba(20,20,20,0.9)") : "rgba(255,255,255,0.9)";
