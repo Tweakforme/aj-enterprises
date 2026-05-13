@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
+type Status = "idle" | "loading" | "success" | "error";
+
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -14,18 +16,27 @@ export default function Contact() {
     budget: "",
     message: "",
   });
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setStatus("success");
+      setFormData({ name: "", email: "", company: "", budget: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -205,17 +216,35 @@ export default function Contact() {
                   />
                 </div>
 
+                {/* Success state */}
+                {status === "success" && (
+                  <div className="p-5 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-500/30 text-center">
+                    <p className="text-green-800 dark:text-green-300 font-semibold text-sm mb-1">Message sent!</p>
+                    <p className="text-green-700 dark:text-green-400 text-xs">Check your inbox — a confirmation is on its way. We&apos;ll reply within 24 hours.</p>
+                  </div>
+                )}
+
+                {/* Error state */}
+                {status === "error" && (
+                  <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-500/30 text-center">
+                    <p className="text-red-700 dark:text-red-300 text-sm">Something went wrong. Email us directly at <a href="mailto:aj@orcaenterprises.ca" className="underline">aj@orcaenterprises.ca</a></p>
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-5 bg-primary-light dark:bg-primary text-white dark:text-dark-100 font-bold text-base hover:bg-accent-light dark:hover:bg-accent transition-all duration-300 relative overflow-hidden group hover:shadow-[0_0_30px_rgba(0,107,125,0.4)] dark:hover:shadow-[0_0_30px_rgba(0,240,255,0.3)]"
+                  disabled={status === "loading" || status === "success"}
+                  className="w-full py-5 bg-primary-light dark:bg-primary text-white dark:text-dark-100 font-bold text-base hover:bg-accent-light dark:hover:bg-accent transition-all duration-300 relative overflow-hidden group hover:shadow-[0_0_30px_rgba(0,107,125,0.4)] dark:hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <span className="relative z-10">Send Message</span>
+                  <span className="relative z-10">
+                    {status === "loading" ? "Sending..." : status === "success" ? "Sent!" : "Send Message"}
+                  </span>
                   <div className="absolute inset-0 bg-accent-light dark:bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </button>
 
                 <p className="text-xs text-ocean-500 dark:text-white/40 text-center">
-                  I typically respond within 24 hours
+                  Typically respond within 24 hours
                 </p>
               </div>
             </form>
