@@ -46,33 +46,24 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Safe-area fill — covers iPhone notch/Dynamic Island area */}
-      <div
-        aria-hidden
-        className="fixed top-0 left-0 right-0 pointer-events-none"
-        style={{
-          height: "env(safe-area-inset-top)",
-          zIndex: 9999,
-          background: atTop
-            ? "rgba(0,0,0,0.15)"
-            : isDark ? "#080e1c" : "#ffffff",
-        }}
-      />
       <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          !atTop
-            ? isDark
-              ? "bg-[#080e1c]/92 backdrop-blur-2xl border-b border-white/8 shadow-[0_1px_20px_rgba(0,0,0,0.4)]"
-              : "bg-white/94 backdrop-blur-2xl border-b border-black/8 shadow-[0_1px_12px_rgba(0,0,0,0.08)]"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-400"
         style={{
           WebkitTransform: "translate3d(0,0,0)",
           transform: "translate3d(0,0,0)",
+          // paddingTop pushes nav content below the notch/Dynamic Island
+          // backgroundColor covers that padding area — must be inline (not Tailwind) so iOS applies it
           paddingTop: "env(safe-area-inset-top)",
+          backgroundColor: atTop
+            ? "transparent"
+            : isDark ? "rgba(8,14,28,0.97)" : "rgba(255,255,255,0.97)",
+          backdropFilter: atTop ? "none" : "blur(20px) saturate(180%)",
+          WebkitBackdropFilter: atTop ? "none" : "blur(20px) saturate(180%)",
+          borderBottom: atTop ? "none" : isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)",
+          boxShadow: atTop ? "none" : isDark ? "0 1px 20px rgba(0,0,0,0.5)" : "0 1px 12px rgba(0,0,0,0.08)",
         }}
       >
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">

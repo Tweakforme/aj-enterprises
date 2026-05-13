@@ -24,6 +24,11 @@
     cursor: none;
   }
 
+  /* Touch devices have no cursor — restore it so taps work normally */
+  @media (pointer: coarse) {
+    body { cursor: auto; }
+  }
+
   /* Light mode body - soft ocean blue tint */
   body {
     @apply bg-light-100;
@@ -36,12 +41,13 @@
 
   html {
     scroll-behavior: smooth;
-    /* Covers iOS elastic overscroll area above the fixed header */
-    background-color: #ffffff;
+    /* Matches body bg-light-100 — shown when iOS elastic-overscrolls past the top/bottom */
+    background-color: #F8FAFB;
   }
 
   .dark html {
-    background-color: #080e1c;
+    /* Matches body bg-dark-100 */
+    background-color: #0A0A0A;
   }
 
   /* Custom scrollbar */
@@ -166,6 +172,11 @@ body::before {
   pointer-events: none;
   z-index: 10000;
   transform: translate(-50%, -50%);
+}
+
+/* Hide custom cursor entirely on touch screens */
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-circle { display: none !important; }
 }
 
 /* Inner dot */
