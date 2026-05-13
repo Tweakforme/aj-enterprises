@@ -46,6 +46,17 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Safe-area fill — own fixed element so it reliably covers the iPhone notch/Dynamic Island area */}
+      <div
+        aria-hidden
+        className="fixed top-0 left-0 right-0 pointer-events-none z-[51] transition-colors duration-400"
+        style={{
+          height: "env(safe-area-inset-top)",
+          background: atTop
+            ? "rgba(0,0,0,0.15)"
+            : isDark ? "#080e1c" : "#ffffff",
+        }}
+      />
       <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -63,18 +74,6 @@ export default function Navbar() {
           paddingTop: "env(safe-area-inset-top)",
         }}
       >
-        {/* Safe-area fill strip */}
-        <div
-          aria-hidden
-          className="absolute top-0 left-0 right-0 transition-colors duration-400"
-          style={{
-            height: "env(safe-area-inset-top)",
-            background: !atTop
-              ? isDark ? "rgba(8,14,28,0.92)" : "rgba(255,255,255,0.94)"
-              : "rgba(0,0,0,0.15)",
-          }}
-        />
-
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-[62px] sm:h-[70px] lg:h-[84px]">
 
