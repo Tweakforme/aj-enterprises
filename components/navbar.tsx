@@ -46,12 +46,13 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Safe-area fill — own fixed element so it reliably covers the iPhone notch/Dynamic Island area */}
+      {/* Safe-area fill — covers iPhone notch/Dynamic Island area */}
       <div
         aria-hidden
-        className="fixed top-0 left-0 right-0 pointer-events-none z-[51] transition-colors duration-400"
+        className="fixed top-0 left-0 right-0 pointer-events-none"
         style={{
           height: "env(safe-area-inset-top)",
+          zIndex: 9999,
           background: atTop
             ? "rgba(0,0,0,0.15)"
             : isDark ? "#080e1c" : "#ffffff",

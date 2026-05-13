@@ -36,6 +36,12 @@
 
   html {
     scroll-behavior: smooth;
+    /* Covers iOS elastic overscroll area above the fixed header */
+    background-color: #ffffff;
+  }
+
+  .dark html {
+    background-color: #080e1c;
   }
 
   /* Custom scrollbar */
