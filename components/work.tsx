@@ -8,14 +8,14 @@ import Link from "next/link";
 
 const projects = [
   {
-    title: "Rentals Kamloops",
-    url: "rentalskamloops.ca",
-    fullUrl: "https://rentalskamloops.ca",
+    title: "Understance",
+    url: "understance.com",
+    fullUrl: "https://understance.com",
     description:
-      "Property rental platform for Kamloops real estate. Browse, search, and discover available rental properties with advanced filtering.",
-    category: "Real Estate Platform",
-    tags: ["Next.js", "Property Search", "Responsive Design"],
-    image: "/rentals.png",
+      "Canadian intimate apparel brand focused on inclusive sizing and premium quality. Developed a high-converting e-commerce experience with seamless product browsing, size guides, and an optimized checkout flow.",
+    category: "Shopify Store",
+    tags: ["Shopify", "E-Commerce", "Apparel"],
+    image: "/understance.png",
   },
   {
     title: "Chilly Moose",
@@ -36,6 +36,16 @@ const projects = [
     category: "Shopify Store",
     tags: ["Shopify", "Custom Products", "Conversion Optimized"],
     image: "/furtraits.png",
+  },
+  {
+    title: "Sleep Country",
+    url: "sleepcountry.ca",
+    fullUrl: "https://sleepcountry.ca",
+    description:
+      "Canada's leading mattress and sleep accessories retailer. Built high-performance features focused on product discovery, sleep solution recommendations, and a seamless online shopping experience.",
+    category: "E-Commerce Platform",
+    tags: ["E-Commerce", "Retail", "Performance"],
+    image: "/sleepcountry.png",
   },
   {
     title: "Hodder Construction",
@@ -76,6 +86,16 @@ const projects = [
     category: "Web Application",
     tags: ["Node.js", "Authentication", "Dashboard"],
     image: "/employee.png",
+  },
+  {
+    title: "Rentals Kamloops",
+    url: "rentalskamloops.ca",
+    fullUrl: "https://rentalskamloops.ca",
+    description:
+      "Property rental platform for Kamloops real estate. Browse, search, and discover available rental properties with advanced filtering.",
+    category: "Real Estate Platform",
+    tags: ["Next.js", "Property Search", "Responsive Design"],
+    image: "/rentals.png",
   },
 ];
 

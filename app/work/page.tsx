@@ -9,14 +9,14 @@ import Link from "next/link";
 
 const projects = [
   {
-    title: "Rentals Kamloops",
-    url: "rentalskamloops.ca",
-    fullUrl: "https://rentalskamloops.ca",
-    description: "Property rental platform for Kamloops real estate. Browse, search, and discover available rental properties with advanced filtering.",
-    category: "Real Estate Platform",
-    tags: ["Next.js", "Property Search", "Responsive Design"],
-    image: "/rentals.png",
-    results: ["20+ active listings", "50% faster load time", "Mobile-first design"],
+    title: "Understance",
+    url: "understance.com",
+    fullUrl: "https://understance.com",
+    description: "Canadian intimate apparel brand focused on inclusive sizing and premium quality. Developed a high-converting e-commerce experience with seamless product browsing, size guides, and an optimized checkout flow.",
+    category: "Shopify Store",
+    tags: ["Shopify", "E-Commerce", "Apparel"],
+    image: "/understance.png",
+    results: ["Inclusive size range UX", "High-converting product pages", "Mobile-optimized shopping"],
   },
   {
     title: "Chilly Moose",
@@ -37,6 +37,16 @@ const projects = [
     tags: ["Shopify", "Custom Products", "Conversion Optimized"],
     image: "/furtraits.png",
     results: ["98% customer satisfaction", "12-hour turnaround system", "Conversion-optimized checkout"],
+  },
+  {
+    title: "Sleep Country",
+    url: "sleepcountry.ca",
+    fullUrl: "https://sleepcountry.ca",
+    description: "Canada's leading mattress and sleep accessories retailer. Built high-performance features focused on product discovery, sleep solution recommendations, and a seamless online shopping experience.",
+    category: "E-Commerce Platform",
+    tags: ["E-Commerce", "Retail", "Performance"],
+    image: "/sleepcountry.png",
+    results: ["Optimized product discovery", "Sleep solution recommender", "Performance-first build"],
   },
   {
     title: "Hodder Construction",
@@ -78,6 +88,16 @@ const projects = [
     image: "/employee.png",
     results: ["Secure authentication", "Real-time updates", "Role-based access"],
   },
+  {
+    title: "Rentals Kamloops",
+    url: "rentalskamloops.ca",
+    fullUrl: "https://rentalskamloops.ca",
+    description: "Property rental platform for Kamloops real estate. Browse, search, and discover available rental properties with advanced filtering.",
+    category: "Real Estate Platform",
+    tags: ["Next.js", "Property Search", "Responsive Design"],
+    image: "/rentals.png",
+    results: ["20+ active listings", "50% faster load time", "Mobile-first design"],
+  },
 ];
 
 const capabilities = [
@@ -104,7 +124,7 @@ const capabilities = [
 ];
 
 const stats = [
-  { number: "6+", label: "Projects Delivered", description: "Across multiple industries" },
+  { number: "9+", label: "Projects Delivered", description: "Across multiple industries" },
   { number: "100%", label: "Client Satisfaction", description: "5-star reviews & referrals" },
   { number: "40%", label: "Avg Speed Boost", description: "Performance optimization" },
   { number: "48hr", label: "Quick Turnaround", description: "For standard projects" },
